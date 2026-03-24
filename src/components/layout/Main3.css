@@ -1,0 +1,105 @@
+.main3 {
+  padding: 200px 130px 0 130px;
+}
+
+.main3__inner {
+  width: 100%;
+}
+
+/* 상단 행: 텍스트+버튼 왼쪽 / 네비 버튼 오른쪽 */
+.main3__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.main3__top-left {
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+
+/* font06: 40px Semibold — black */
+.main3__title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #1A1A1A;
+}
+
+/* Business 버튼 — Main2 버튼과 동일한 스타일 */
+.main3__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 32px;
+  border-radius: 500px;
+  background-color: #1A1A1A;
+  text-decoration: none;
+  width: fit-content;
+  transition: background-color 0.2s ease;
+}
+
+.main3__btn:hover {
+  background-color: #484848;
+}
+
+.main3__btn-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #FFFFFF;
+}
+
+.main3__btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 이전/다음 버튼 */
+.main3__nav-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.main3__nav-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.main3__nav-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+/* 이전: fill white + stroke gray04 */
+.main3__nav-btn--prev {
+  background-color: #FFFFFF;
+  border: 1px solid #D1D1D1;
+}
+
+/* 다음: fill black */
+.main3__nav-btn--next {
+  background-color: #1A1A1A;
+}
+
+.main3__nav-btn--next img {
+  filter: brightness(0) invert(1);
+}
+
+.main3__nav-btn:hover {
+  opacity: 0.7;
+}

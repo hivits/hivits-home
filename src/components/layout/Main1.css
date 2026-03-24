@@ -1,0 +1,29 @@
+.main1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 160px 40px 40px 40px;
+}
+
+.main1__hero {
+  display: flex;
+  width: 100%;
+  max-width: 1840px;
+  aspect-ratio: 1840 / 800;
+  justify-content: center;
+  align-items: center;
+  border-radius: 32px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main1__hero-text {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: pre-line;
+}

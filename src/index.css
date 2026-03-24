@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --black: #1A1A1A;
+  --white: #FFFFFF;
+  --bg: #F5F5F5;
+  --gray-01: #484848;
+  --gray-02: #767676;
+  --gray-03: #A3A3A3;
+  --gray-04: #D1D1D1;
+  --gray-05: #F0F0F0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  font-family: 'Pretendard', 'Roboto', sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font01 { font-family: 'Pretendard', sans-serif; font-size: 100px; font-weight: 600; line-height: 140%; }
+.font02 { font-family: 'Pretendard', sans-serif; font-size: 72px;  font-weight: 600; line-height: 140%; }
+.font03 { font-family: 'Pretendard', sans-serif; font-size: 60px;  font-weight: 600; line-height: 140%; }
+.font04 { font-family: 'Pretendard', sans-serif; font-size: 52px;  font-weight: 600; line-height: 140%; }
+.font05 { font-family: 'Pretendard', sans-serif; font-size: 44px;  font-weight: 600; line-height: 140%; }
+.font06 { font-family: 'Pretendard', sans-serif; font-size: 40px;  font-weight: 600; line-height: 140%; }
+.font07 { font-family: 'Pretendard', sans-serif; font-size: 36px;  font-weight: 600; line-height: 140%; }
+.font08 { font-family: 'Pretendard', sans-serif; font-size: 28px;  font-weight: 600; line-height: 140%; }
+.font09 { font-family: 'Pretendard', sans-serif; font-size: 24px;  font-weight: 600; line-height: 140%; }
+.font10 { font-family: 'Pretendard', sans-serif; font-size: 28px;  font-weight: 500; line-height: 140%; }
+.font11 { font-family: 'Pretendard', sans-serif; font-size: 24px;  font-weight: 500; line-height: 140%; }
+.font12 { font-family: 'Pretendard', sans-serif; font-size: 24px;  font-weight: 400; line-height: 140%; }
+.font13 { font-family: 'Pretendard', sans-serif; font-size: 20px;  font-weight: 400; line-height: 140%; }
+.font14 { font-family: 'Pretendard', sans-serif; font-size: 20px;  font-weight: 500; line-height: 140%; }
+.font15 { font-family: 'Pretendard', sans-serif; font-size: 16px;  font-weight: 400; line-height: 140%; }
+.font16 { font-family: 'Pretendard', sans-serif; font-size: 16px;  font-weight: 500; line-height: 140%; }
+
+.font17 { font-family: 'Roboto', sans-serif; font-size: 60px; font-weight: 600; line-height: 140%; }
+.font18 { font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: 600; line-height: 140%; }
+.font19 { font-family: 'Roboto', sans-serif; font-size: 20px; font-weight: 500; line-height: 140%; }
+.font20 { font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: 500; line-height: 140%; }
+.font21 { font-family: 'Roboto', sans-serif; font-size: 20px; font-weight: 600; line-height: 140%; }
+.font22 { font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 500; line-height: 140%; }
