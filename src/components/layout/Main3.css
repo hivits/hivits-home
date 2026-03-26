@@ -1,17 +1,19 @@
 .main3 {
-  padding: 200px 130px 0 130px;
+  padding: 200px 0 0 130px;
 }
 
 .main3__inner {
   width: 100%;
 }
 
-/* 상단 행: 텍스트+버튼 왼쪽 / 네비 버튼 오른쪽 */
+/* 상단 행 */
 .main3__top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 52px;
+  padding-right: 130px;
 }
 
 .main3__top-left {
@@ -20,7 +22,6 @@
   gap: 52px;
 }
 
-/* font06: 40px Semibold — black */
 .main3__title {
   font-family: 'Pretendard', sans-serif;
   font-size: 40px;
@@ -29,7 +30,6 @@
   color: #1A1A1A;
 }
 
-/* Business 버튼 — Main2 버튼과 동일한 스타일 */
 .main3__btn {
   display: inline-flex;
   align-items: center;
@@ -59,10 +59,9 @@
   height: 20px;
 }
 
-/* 이전/다음 버튼 */
+/* 네비 버튼 */
 .main3__nav-btns {
   display: flex;
-  flex-direction: row;
   gap: 12px;
   align-items: center;
 }
@@ -85,21 +84,166 @@
   height: 24px;
 }
 
-/* 이전: fill white + stroke gray04 */
 .main3__nav-btn--prev {
   background-color: #FFFFFF;
   border: 1px solid #D1D1D1;
 }
 
-/* 다음: fill black */
 .main3__nav-btn--next {
   background-color: #1A1A1A;
 }
 
-.main3__nav-btn--next img {
-  filter: brightness(0) invert(1);
+.main3__nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
-.main3__nav-btn:hover {
+.main3__nav-btn:hover:not(:disabled) {
   opacity: 0.7;
+}
+
+/* 슬라이더 */
+.main3__slider {
+  overflow: visible;
+}
+
+.main3__track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 카드 500x460 */
+.main3__card {
+  position: relative;
+  width: 500px;
+  height: 460px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* 기본 오버레이 */
+.main3__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  border-radius: 24px;
+  transition: opacity 0.3s ease;
+}
+
+.main3__card:hover .main3__card-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+/* 기본 콘텐츠 */
+.main3__card-default {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.main3__card:hover .main3__card-default {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* 호버 콘텐츠 */
+.main3__card-hover {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.main3__card:hover .main3__card-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 로고 */
+.main3__card-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* font10: 28px Semibold */
+.main3__card-name {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #F5F5F5;
+  margin-bottom: 8px;
+}
+
+/* font14: 20px Medium */
+.main3__card-desc {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #F5F5F5;
+  margin-bottom: 12px;
+}
+
+/* font15: 16px Regular */
+.main3__card-hover-text {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 160%;
+  color: #F5F5F5;
+}
+
+/* 반응형 */
+@media (max-width: 1400px) {
+  .main3 { padding: 200px 0 0 80px; }
+  .main3__top { padding-right: 80px; }
+}
+
+@media (max-width: 1024px) {
+  .main3 { padding: 120px 0 0 40px; }
+  .main3__top { padding-right: 40px; }
+  .main3__title { font-size: 32px; }
+}
+
+@media (max-width: 768px) {
+  .main3 { padding: 80px 0 0 20px; }
+  .main3__top { padding-right: 20px; }
+  .main3__title { font-size: 26px; }
+}
+
+/* 슬라이더 래퍼: 왼쪽 여백 포함 전체에서 overflow hidden */
+.main3__slider-wrap {
+  overflow: hidden;
+  margin-left: -130px;
+  padding-left: 130px;
+}
+
+.main3__slider {
+  overflow: visible;
 }

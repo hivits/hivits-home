@@ -1,0 +1,147 @@
+.main4 {
+  margin-top: 200px;
+}
+
+.main4__bg {
+  width: 100%;
+  height: 1080px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* 타이틀 */
+.main4__title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #1A1A1A;
+  text-align: center;
+  position: absolute;
+  top: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* 생동감 있는 float keyframes */
+@keyframes float1 {
+  0%   { transform: translateY(0px) rotate(-0.5deg); }
+  30%  { transform: translateY(-18px) rotate(0.8deg); }
+  60%  { transform: translateY(-8px) rotate(-0.3deg); }
+  100% { transform: translateY(0px) rotate(-0.5deg); }
+}
+
+@keyframes float2 {
+  0%   { transform: translateY(0px) rotate(0.4deg); }
+  25%  { transform: translateY(-12px) rotate(-0.6deg); }
+  55%  { transform: translateY(-20px) rotate(0.5deg); }
+  80%  { transform: translateY(-6px) rotate(-0.2deg); }
+  100% { transform: translateY(0px) rotate(0.4deg); }
+}
+
+@keyframes float3 {
+  0%   { transform: translateY(-10px) rotate(0.3deg); }
+  35%  { transform: translateY(8px) rotate(-0.7deg); }
+  65%  { transform: translateY(-16px) rotate(0.4deg); }
+  100% { transform: translateY(-10px) rotate(0.3deg); }
+}
+
+@keyframes float4 {
+  0%   { transform: translateY(-6px) rotate(-0.4deg); }
+  40%  { transform: translateY(-22px) rotate(0.6deg); }
+  70%  { transform: translateY(-4px) rotate(-0.5deg); }
+  100% { transform: translateY(-6px) rotate(-0.4deg); }
+}
+
+/* 카드 공통 */
+.main4__card {
+  width: 320px;
+  height: 288px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: absolute;
+  box-sizing: border-box;
+
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.50);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* 1번: 전국 비츠봇 설치 기관 수 */
+.main4__card1 {
+  left: 8.4%;
+  top: 368px;
+  animation: float1 4.2s ease-in-out infinite;
+}
+
+/* 2번: 루티를 통해 일하는 중증장애인 근로자 수 — 100px 위로 */
+.main4__card2 {
+  left: calc(8.4% + 400px);
+  top: 636px;
+  animation: float2 5.3s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+/* 3번: 누적 수거된 펫트병 수 */
+.main4__card3 {
+  left: calc(8.4% + 800px);
+  top: 368px;
+  animation: float3 4.8s ease-in-out infinite;
+  animation-delay: 1.0s;
+}
+
+/* 4번: 루티 도입 시 장애인 고용부담금 감면 혜택 — 100px 위로 */
+.main4__card4 {
+  right: 8.4%;
+  top: 636px;
+  animation: float4 5.8s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* 설명 텍스트 */
+.main4__card-label {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #1A1A1A;
+  white-space: pre-line;
+}
+
+/* 숫자 + 단위 묶음 */
+.main4__card-number-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 6px;
+  align-self: flex-end;
+}
+
+/* 숫자 */
+.main4__card-number {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 120%;
+  color: #1A1A1A;
+}
+
+/* 단위 */
+.main4__card-unit {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #1A1A1A;
+  padding-bottom: 6px;
+}

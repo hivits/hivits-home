@@ -1,0 +1,166 @@
+.footer {
+  width: 100%;
+  min-height: 900px;
+  background-color: #1A1A1A;
+  box-sizing: border-box;
+  padding: 134px 130px 100px 130px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+}
+
+/* ── 상단 콘텐츠 영역 ── */
+.footer__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* 왼쪽: 타이틀 + 버튼 */
+.footer__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #FFFFFF;
+  margin: 0 0 52px 0;
+  white-space: pre-line;
+}
+
+/* Contact Us 버튼 — 흰색 버전 */
+.footer__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 32px;
+  border-radius: 500px;
+  background-color: #FFFFFF;
+  text-decoration: none;
+  width: fit-content;
+  transition: background-color 0.2s ease;
+}
+
+.footer__btn:hover {
+  background-color: #E0E0E0;
+}
+
+.footer__btn-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #1A1A1A;
+}
+
+.footer__btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 오른쪽: 설명 + 이메일 */
+.footer__right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.footer__desc {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #FFFFFF;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.footer__email {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #F5F5F5;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── 구분선 ── */
+.footer__divider {
+  width: 1661px;
+  max-width: 100%;
+  height: 1px;
+  background-color: #767676;
+  margin: 72px 0 40px 0;
+  flex-shrink: 0;
+}
+
+/* ── 메뉴 ── */
+.footer__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
+}
+
+.footer__nav-item {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #838383;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__nav-item:hover {
+  color: #FFFFFF;
+}
+
+/* ── 하단 법적 정보 + 로고 ── */
+.footer__bottom {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footer__legal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__legal-text {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #D1D1D1;
+  margin: 0;
+}
+
+/* 로고 */
+.footer__logo {
+  width: 224px;
+  height: 91px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.footer__logo img {
+  width: 224px;
+  height: 91px;
+  object-fit: contain;
+}

@@ -18,6 +18,17 @@
   padding: 0;
 }
 
+.main {
+  width: 100%;
+}
+@media (min-width: 1000px) {
+  .main {
+    width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+
 html, body {
   width: 100%;
   font-family: 'Pretendard', 'Roboto', sans-serif;
