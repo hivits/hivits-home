@@ -84,10 +84,6 @@
   animation: slideRight 25s linear infinite;
 }
 
-.main5__row--left:hover,
-.main5__row--right:hover {
-  animation-play-state: paused;
-}
 
 @keyframes slideLeft {
   0%   { transform: translateX(0); }

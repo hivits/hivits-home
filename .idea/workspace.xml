@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4879a74d-1573-4280-aabd-9dcff326b98e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/img_number.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_air.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_daejun.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_daiso.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_hana.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_hivits.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_jong.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_korea.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_kunguk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_kyungki.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_modu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_petmoa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_rooti.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_sejong.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_seoul.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo_vitsbot.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/layout/Footer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/layout/Main4.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/layout/Main4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/layout/Main5.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/layout/Main5.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Main1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Main1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Main3.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Main3.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Main3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Main3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main5.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Main5.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
