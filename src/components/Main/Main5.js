@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import arrowIcon from '../../assets/icon_arrow.svg';
+import arrowHoverIcon from '../../assets/icon_arrow_hover.svg';
 import logoJong from '../../assets/logo_jong.svg';
 import logoDaiso from '../../assets/logo_daiso.svg';
 import logoModu from '../../assets/logo_modu.svg';
@@ -48,15 +50,13 @@ function Main5() {
     <section className="main5">
       <div className="main5__top">
         <h2 className="main5__title">이미 다양한 그룹들이 신뢰하고 있습니다</h2>
-        <a href="#" className="main5__btn">
+        <Link to="/partners" className="main5__btn">
           <span className="main5__btn-text">Partners</span>
-          <img
-            src={arrowIcon}
-            alt="arrow"
-            className="main5__btn-icon"
-            style={{ filter: 'brightness(0) invert(1)' }}
-          />
-        </a>
+          <div className="main5__btn-icon-wrap">
+            <img src={arrowIcon}      alt="arrow" className="icon-default" />
+            <img src={arrowHoverIcon} alt="arrow" className="icon-hover"   style={{ filter: 'brightness(0) invert(1)' }} />
+          </div>
+        </Link>
       </div>
 
       <div className="main5__slider-section">

@@ -1,12 +1,19 @@
+import { Link } from 'react-router-dom';
 import arrowIcon from '../../assets/icon_arrow.svg';
+import arrowHoverIcon from '../../assets/icon_arrow_hover.svg';
 import logoHivits from '../../assets/logo_hivits.svg';
 import './Footer.css';
 
-const NAV_ITEMS = ['About Hivits', 'Business', 'Partners', 'Contact Us'];
+const NAV_ITEMS = [
+  { name: 'About Hivits', path: '/about' },
+  { name: 'Business',     path: '/business' },
+  { name: 'Partners',     path: '/partners' },
+  { name: 'Contact Us',   path: '/contact' },
+];
 
-function Footer() {
+function Footer({ noMargin = false }) {
   return (
-    <footer className="footer">
+    <footer className={`footer${noMargin ? ' footer--no-margin' : ''}`}>
 
       {/* 상단: 왼쪽 타이틀+버튼 / 오른쪽 설명+이메일 */}
       <div className="footer__top">
@@ -16,10 +23,13 @@ function Footer() {
           <h2 className="footer__title">
             {"하이비츠에 대해 궁금하신가요?\n지금 바로 문의해보세요."}
           </h2>
-          <a href="#" className="footer__btn">
+          <Link to="/contact" className="footer__btn">
             <span className="footer__btn-text">Contact Us</span>
-            <img src={arrowIcon} alt="arrow" className="footer__btn-icon" />
-          </a>
+            <div className="footer__btn-icon-wrap">
+              <img src={arrowIcon}      alt="arrow" className="icon-default" style={{ filter: 'brightness(0) invert(1)' }} />
+              <img src={arrowHoverIcon} alt="arrow" className="icon-hover"  style={{ filter: 'brightness(0)' }} />
+            </div>
+          </Link>
         </div>
 
         {/* 오른쪽 */}
@@ -40,9 +50,9 @@ function Footer() {
       {/* 메뉴 */}
       <nav className="footer__nav">
         {NAV_ITEMS.map((item) => (
-          <a key={item} href="#" className="footer__nav-item">
-            {item}
-          </a>
+          <Link key={item.name} to={item.path} className="footer__nav-item">
+            {item.name}
+          </Link>
         ))}
       </nav>
 

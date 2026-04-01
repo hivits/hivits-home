@@ -1,15 +1,18 @@
 .main4 {
-  margin-top: 200px;
+  margin-top: 140px;
 }
 
 .main4__bg {
   width: 100%;
-  height: 1080px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
   box-sizing: border-box;
+  padding: 120px 8.4% 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
 /* 타이틀 */
@@ -20,14 +23,21 @@
   line-height: 140%;
   color: #1A1A1A;
   text-align: center;
-  position: absolute;
-  top: 160px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-bottom: 160px;
   white-space: nowrap;
 }
 
-/* 생동감 있는 float keyframes */
+/* 카드 그리드: 2열 2행, 지그재그 배치 */
+.main4__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 2.8%;
+  row-gap: 0;
+}
+
+/* float 애니메이션 */
 @keyframes float1 {
   0%   { transform: translateY(0px) rotate(-0.5deg); }
   30%  { transform: translateY(-18px) rotate(0.8deg); }
@@ -59,15 +69,13 @@
 
 /* 카드 공통 */
 .main4__card {
-  width: 320px;
-  height: 288px;
   padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  position: absolute;
   box-sizing: border-box;
+  aspect-ratio: 320 / 288;
 
   border-radius: 36px;
   background: rgba(255, 255, 255, 0.50);
@@ -77,33 +85,36 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* 1번: 전국 비츠봇 설치 기관 수 */
+/* 지그재그: 1,3번 카드는 위에, 2,4번은 아래에 */
 .main4__card1 {
-  left: 8.4%;
-  top: 368px;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
   animation: float1 4.2s ease-in-out infinite;
 }
 
-/* 2번: 루티를 통해 일하는 중증장애인 근로자 수 — 100px 위로 */
 .main4__card2 {
-  left: calc(8.4% + 400px);
-  top: 636px;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  margin-top: 40%;
   animation: float2 5.3s ease-in-out infinite;
   animation-delay: 0.6s;
 }
 
-/* 3번: 누적 수거된 펫트병 수 */
 .main4__card3 {
-  left: calc(8.4% + 800px);
-  top: 368px;
+  grid-column: 3;
+  grid-row: 1;
+  align-self: start;
   animation: float3 4.8s ease-in-out infinite;
   animation-delay: 1.0s;
 }
 
-/* 4번: 루티 도입 시 장애인 고용부담금 감면 혜택 — 100px 위로 */
 .main4__card4 {
-  right: 8.4%;
-  top: 636px;
+  grid-column: 4;
+  grid-row: 1;
+  align-self: end;
+  margin-top: 40%;
   animation: float4 5.8s ease-in-out infinite;
   animation-delay: 1.5s;
 }
@@ -111,7 +122,7 @@
 /* 설명 텍스트 */
 .main4__card-label {
   font-family: 'Pretendard', sans-serif;
-  font-size: 20px;
+  font-size: clamp(13px, 1.4vw, 20px);
   font-weight: 500;
   line-height: 140%;
   color: #1A1A1A;
@@ -130,7 +141,7 @@
 /* 숫자 */
 .main4__card-number {
   font-family: 'Pretendard', sans-serif;
-  font-size: 52px;
+  font-size: clamp(24px, 3.6vw, 52px);
   font-weight: 600;
   line-height: 120%;
   color: #1A1A1A;
@@ -139,9 +150,93 @@
 /* 단위 */
 .main4__card-unit {
   font-family: 'Pretendard', sans-serif;
-  font-size: 20px;
+  font-size: clamp(11px, 1.4vw, 20px);
   font-weight: 500;
   line-height: 140%;
   color: #1A1A1A;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
+}
+/* 1400px 이하 */
+@media (max-width: 1400px) {
+  .main4__bg {
+    padding: 100px 6% 160px;
+  }
+  .main4__title {
+    font-size: 34px;
+    margin-bottom: 120px;
+  }
+}
+
+/* 1024px 이하 */
+@media (max-width: 1024px) {
+  .main4__bg {
+    padding: 80px 5% 120px;
+  }
+  .main4__title {
+    font-size: 30px;
+    margin-bottom: 80px;
+  }
+  .main4__grid {
+    column-gap: 2%;
+  }
+}
+
+/* 768px 이하 - 1열 지그재그 */
+@media (max-width: 768px) {
+  .main4 {
+    margin-top: 80px;
+  }
+  .main4__bg {
+    padding: 60px 20px 80px;
+  }
+  .main4__title {
+    font-size: 26px;
+    margin-bottom: 48px;
+    white-space: normal;
+    word-break: keep-all;
+  }
+
+  .main4__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* 카드 너비만 줄임 — aspect-ratio·padding·border-radius는 원본 유지 */
+  .main4__card1,
+  .main4__card2,
+  .main4__card3,
+  .main4__card4 {
+    grid-column: unset;
+    grid-row: unset;
+    margin-top: 0;
+    width: 44vw;
+  }
+
+  .main4__card1,
+  .main4__card3 {
+    align-self: flex-start;
+  }
+
+  .main4__card2,
+  .main4__card4 {
+    align-self: flex-end;
+  }
+
+  /* 텍스트↔숫자 간격 40px */
+  .main4__card {
+    gap: 40px;
+  }
+
+  .main4__card-label {
+    font-size: 16px;
+  }
+
+  .main4__card-number {
+    font-size: 52px;
+  }
+
+  .main4__card-unit {
+    font-size: 16px;
+  }
 }

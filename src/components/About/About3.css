@@ -1,0 +1,230 @@
+.about3 {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding-bottom: 36px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.about3__bg-mission {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 120px;
+  font-weight: 600;
+  color: #F5F5F5;
+  line-height: 1;
+  margin: 0;
+  z-index: 1;
+}
+
+.about3__inner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.about3__left {
+  padding-top: 286px;
+  padding-left: 130px;
+  padding-right: 40px;
+  flex: 1;
+}
+
+.about3__desc-main {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #1A1A1A;
+  margin: 0 0 40px 0;
+  word-break: keep-all;
+}
+
+.about3__desc-sub {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #484848;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.about3__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-top: 120px;
+  padding-bottom: 36px;
+  padding-right: 60px;
+  flex-shrink: 0;
+}
+
+.about3__img {
+  width: 320px;
+  height: auto;
+  margin-bottom: 52px;
+}
+
+.about3__bg-vision {
+  font-family: 'Roboto', sans-serif;
+  font-size: 120px;
+  font-weight: 600;
+  color: #F5F5F5;
+  line-height: 1;
+  margin: 0;
+}
+
+
+/* ════════════════════════════════════════
+   반응형 미디어쿼리
+   ════════════════════════════════════════ */
+
+/* ── 태블릿 (1024px 이하) ── */
+@media (max-width: 1024px) {
+  .about3__bg-mission {
+    font-size: 80px;
+    top: 40px;
+    left: 40px;
+  }
+
+  .about3__left {
+    padding-top: 200px;
+    padding-left: 60px;
+    padding-right: 30px;
+  }
+
+  .about3__desc-main {
+    font-size: 28px;
+  }
+
+  .about3__desc-sub {
+    font-size: 17px;
+  }
+
+  .about3__right {
+    padding-right: 40px;
+    padding-top: 80px;
+  }
+
+  .about3__img {
+    width: 240px;
+  }
+
+  .about3__bg-vision {
+    font-size: 80px;
+  }
+}
+
+
+/* ── 모바일 (768px 이하) ── */
+/*
+  스크린샷 기준 순서:
+  1. "Mission" 배경 텍스트 (absolute, 상단)
+  2. 메인 텍스트
+  3. 서브 텍스트
+  4. 이미지 (오른쪽 정렬)
+  5. "&Vision" 배경 텍스트 (하단)
+*/
+@media (max-width: 768px) {
+  .about3 {
+    padding-bottom: 0;
+    margin-top: 80px;
+  }
+
+  /* Mission 배경 텍스트 */
+  .about3__bg-mission {
+    font-size: 56px;
+    top: 28px;
+    left: 20px;
+  }
+
+  /* 세로 레이아웃으로 전환 */
+  .about3__inner {
+    flex-direction: column;
+  }
+
+  /* 왼쪽 텍스트 영역 */
+  .about3__left {
+    padding-top: 120px;
+    padding-left: 24px;
+    padding-right: 24px;
+    flex: none;
+  }
+
+  .about3__desc-main {
+    font-size: 22px;
+    margin: 0 0 24px 0;
+    line-height: 150%;
+  }
+
+  .about3__desc-sub {
+    font-size: 14px;
+    line-height: 160%;
+    color: #484848;
+  }
+
+  /* 오른쪽 이미지 + Vision 영역 */
+  .about3__right {
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-top: 32px;
+    padding-bottom: 0;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .about3__img {
+    width: 180px;
+    margin-bottom: 24px;
+  }
+
+  /* &Vision 배경 텍스트 */
+  .about3__bg-vision {
+    font-size: 56px;
+    align-self: flex-end;
+  }
+}
+
+
+/* ── 소형 모바일 (480px 이하) ── */
+@media (max-width: 480px) {
+  .about3__bg-mission {
+    font-size: 44px;
+    top: 20px;
+    left: 16px;
+  }
+
+  .about3__left {
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .about3__desc-main {
+    font-size: 20px;
+  }
+
+  .about3__desc-sub {
+    font-size: 13px;
+  }
+
+  .about3__right {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .about3__img {
+    width: 150px;
+  }
+
+  .about3__bg-vision {
+    font-size: 44px;
+  }
+}

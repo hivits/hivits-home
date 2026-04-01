@@ -1,0 +1,204 @@
+/* ===================================================
+   전체 섹션
+   =================================================== */
+.about6 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 140px;
+  padding: 0 130px;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 40px;
+}
+
+/* ===================================================
+   왼쪽 타이틀 영역
+   =================================================== */
+.about6__text-wrap {
+  flex-shrink: 0;
+  width: clamp(300px, 35%, 480px);
+  z-index: 10;
+}
+
+.about6__title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: clamp(22px, 2.2vw, 40px);
+  font-weight: 600;
+  color: #1A1A1A;
+  line-height: 140%;
+  margin: 0;
+  word-break: keep-all;
+}
+
+/* ===================================================
+   오른쪽 지도 영역
+   =================================================== */
+.about6__map-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  flex-shrink: 1;
+}
+
+.about6__map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===================================================
+   지도 위 포인트(점 & 툴팁)
+   =================================================== */
+.about6__point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.about6__dot {
+  position: relative;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.about6__dot:hover {
+  transform: scale(1.1);
+}
+
+/* ✨ 핵심: 툴팁을 점 기준 왼쪽에 고정 */
+.about6__tooltip {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 48px);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.about6__tooltip-box {
+  background-color: #F5F5F5;
+  border-radius: 20px;
+  padding: clamp(16px, 2vw, 32px) clamp(24px, 3vw, 52px) clamp(16px, 2vw, 32px) clamp(16px, 2vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 40px);
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); /* ✨ 8% shadow */
+}
+
+.about6__tooltip-region {
+  font-family: 'Pretendard', sans-serif;
+  font-size: clamp(13px, 1.3vw, 20px);
+  font-weight: 500;
+  color: #767676;
+  margin: 0;
+  line-height: 1;
+}
+
+.about6__tooltip-count {
+  font-family: 'Pretendard', sans-serif;
+  font-size: clamp(28px, 3.2vw, 52px);
+  font-weight: 600;
+  color: #1A1A1A;
+  margin: 0;
+  line-height: 1;
+}
+
+/* ════════════════════════════════════════
+   반응형 미디어쿼리
+   ════════════════════════════════════════ */
+
+/* ── 태블릿 (1024px 이하) ── */
+@media (max-width: 1024px) {
+  .about6 {
+    padding: 0 60px;
+    margin-top: 120px;
+    gap: 32px;
+  }
+}
+
+/* ── 모바일 (768px 이하) ── */
+@media (max-width: 768px) {
+  .about6 {
+    flex-direction: column;
+    padding: 0 24px;
+    margin-top: 80px;
+    gap: 32px;
+  }
+
+  .about6__text-wrap {
+    width: 100%;
+  }
+
+  .about6__title {
+    font-size: 22px;
+    line-height: 150%;
+  }
+
+  .about6__map-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about6__map-img {
+    width: 100%;
+  }
+
+  .about6__dot {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* 지도 wrap에 overflow visible 보장 */
+  .about6__map-wrap {
+    overflow: visible;
+  }
+
+  /* 툴팁: 점 위쪽에 표시 — 좌우 잘림 없음 */
+  .about6__tooltip {
+    position: absolute;
+    top: auto;
+    bottom: calc(100% + 16px);
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .about6__tooltip-box {
+    padding: 16px 20px;
+    gap: 20px;
+    white-space: nowrap;
+    border-radius: 14px;
+  }
+
+  .about6__tooltip-region {
+    font-size: 13px;
+  }
+
+  .about6__tooltip-count {
+    font-size: 24px;
+  }
+
+}
+
+/* ── 소형 모바일 (480px 이하) ── */
+@media (max-width: 480px) {
+  .about6 {
+    padding: 0 20px;
+  }
+
+  .about6__title {
+    font-size: 26px;
+  }
+}

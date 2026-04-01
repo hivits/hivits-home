@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import hivisImg from '../../assets/img_hivits.png';
 import arrowIcon from '../../assets/icon_arrow.svg';
+import arrowHoverIcon from '../../assets/icon_arrow_hover.svg';
 import './Main2.css';
 
 function Main2() {
@@ -22,15 +24,13 @@ function Main2() {
             AI 기술을 통해 중증장애인에게 안정적인 일자리를 만들고,<br />
             환경 문제를 해결하며, 사람과 반려동물이 함께 행복한 세상을 만들어갑니다.
           </p>
-          <a href="#" className="main2__btn">
+          <Link to="/about" className="main2__btn">
             <span className="main2__btn-text">About Hivits</span>
-            <img
-              src={arrowIcon}
-              alt="arrow"
-              className="main2__btn-icon"
-              style={{ filter: 'brightness(0) invert(1)' }}
-            />
-          </a>
+            <div className="main2__btn-icon-wrap">
+              <img src={arrowIcon}      alt="arrow" className="icon-default" />
+              <img src={arrowHoverIcon} alt="arrow" className="icon-hover"   style={{ filter: 'brightness(0) invert(1)' }} />
+            </div>
+          </Link>
         </div>
 
       </div>

@@ -1,0 +1,214 @@
+.main5 {
+  /* 반응형 애니메이션 계산을 위한 CSS 변수 도입 */
+  --card-width: 280px;
+  --card-gap: 20px;
+  --card-height: 140px;
+
+  margin-top: 140px;
+}
+
+/* 상단 텍스트 + 버튼 */
+.main5__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 130px;
+  margin-bottom: 52px;
+}
+
+.main5__title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #1A1A1A;
+  word-break: keep-all; /* 모바일에서 글자가 예쁘게 떨어지도록 추가 */
+}
+
+.main5__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 32px;
+  border-radius: 500px;
+  background-color: transparent;
+  border: 1.5px solid #1A1A1A;
+  text-decoration: none;
+  width: fit-content;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.main5__btn::before {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: 0%;
+  background-color: #1A1A1A;
+  border-radius: 500px;
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.main5__btn:hover::before {
+  height: 100%;
+}
+
+.main5__btn-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #1A1A1A;
+  position: relative;
+  z-index: 1;
+  transition: color 0.35s ease;
+}
+
+.main5__btn:hover .main5__btn-text {
+  color: #FFFFFF;
+}
+
+.main5__btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 슬라이더 전체 */
+.main5__slider-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 한 줄 래퍼 */
+.main5__row-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 슬라이딩 트랙 */
+.main5__row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--card-gap);
+  width: max-content;
+  /* 브라우저 렌더링 최적화 */
+  will-change: transform;
+}
+
+/* 1줄: 왼쪽으로 - 기존 30s -> 40s 로 속도 조금 늦춤 */
+.main5__row--left {
+  animation: slideLeft 40s linear infinite;
+}
+
+/* 2줄: 오른쪽으로 - 기존 25s -> 35s 로 속도 조금 늦춤 */
+.main5__row--right {
+  animation: slideRight 35s linear infinite;
+}
+
+/* 하드코딩된 수치를 빼고 CSS 변수로 계산하여 반응형 붕괴 방지 */
+@keyframes slideLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * (var(--card-width) + var(--card-gap)) * 5)); }
+}
+
+@keyframes slideRight {
+  0%   { transform: translateX(calc(-1 * (var(--card-width) + var(--card-gap)) * 5)); }
+  100% { transform: translateX(0); }
+}
+
+/* 로고 카드 */
+.main5__logo-card {
+  width: var(--card-width);
+  height: var(--card-height);
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #F5F5F5;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.main5__logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+
+/* =========================================
+   반응형 미디어 쿼리 적용 (태블릿, 모바일)
+   ========================================= */
+
+/* 태블릿 (1024px 이하) */
+@media screen and (max-width: 1024px) {
+  .main5 {
+    margin-top: 150px;
+  }
+  .main5__top {
+    padding: 0 60px; /* 좌우 여백 축소 */
+  }
+  .main5__title {
+    font-size: 32px;
+  }
+}
+
+/* 모바일 (768px 이하) */
+@media screen and (max-width: 768px) {
+  .main5 {
+    /* 모바일에서는 카드 크기와 갭을 줄여줍니다.
+       변수만 바꿔주면 @keyframes의 슬라이드 너비 계산이 알아서 변합니다! */
+    --card-width: 240px;
+    --card-gap: 16px;
+    --card-height: 120px;
+
+    margin-top: 100px;
+  }
+
+  /* 상단 타이틀과 버튼을 가로 배치에서 세로 배치로 변경 */
+  .main5__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 0 24px;
+    margin-bottom: 40px;
+  }
+
+  .main5__title {
+    font-size: 26px;
+  }
+
+  .main5__btn {
+    padding: 16px 24px; /* 버튼 사이즈 약간 축소 */
+  }
+}
+/* 아이콘 */
+.main5__btn-icon-wrap {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.main5__btn-icon-wrap img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.35s ease;
+}
+
+.main5__btn-icon-wrap .icon-default { opacity: 1; }
+.main5__btn-icon-wrap .icon-hover   { opacity: 0; }
+
+.main5__btn:hover .main5__btn-icon-wrap .icon-default { opacity: 0; }
+.main5__btn:hover .main5__btn-icon-wrap .icon-hover   { opacity: 1; }

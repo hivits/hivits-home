@@ -1,0 +1,63 @@
+.about1 {
+  position: relative;
+  width: 100%;
+  /* ✨ 스크롤 저항감 부여: 200vh -> 400vh로 2배 늘림 */
+  /* 이제 휠을 훨씬 많이 굴려야 배너가 다 커지고 다음으로 넘어갑니다. */
+  height: 400vh;
+  background-color: #FFFFFF;
+}
+
+/* 화면에 꽉 차게 찰칵 고정되는 컨테이너 */
+.about1__sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 패딩이 적용되는 컨테이너 */
+.about1__hero-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* 실제 히어로 이미지 */
+.about1__hero {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* 애니메이션 최적화 및 약간의 텐션을 위한 transition 추가 */
+  will-change: padding, border-radius, max-width;
+  transition: max-width 0.1s ease-out, border-radius 0.1s ease-out;
+}
+
+.about1__hero-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0;
+}
+
+/* 반응형 모바일 크기 대응 */
+@media screen and (max-width: 768px) {
+  .about1__hero-text {
+    font-size: 36px;
+  }
+}

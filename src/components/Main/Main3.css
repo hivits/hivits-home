@@ -1,5 +1,7 @@
 .main3 {
-  padding: 200px 0 0 130px;
+  padding: 140px 0 0 130px;
+  /* 화면 왼쪽 밖으로 나갈 때 스크롤바가 생기는 것을 방지합니다 */
+  overflow-x: hidden;
 }
 
 .main3__inner {
@@ -36,14 +38,28 @@
   gap: 16px;
   padding: 20px 32px;
   border-radius: 500px;
-  background-color: #1A1A1A;
+  background-color: transparent;
+  border: 1.5px solid #1A1A1A;
   text-decoration: none;
   width: fit-content;
-  transition: background-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.main3__btn:hover {
-  background-color: #484848;
+.main3__btn::before {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: 0%;
+  background-color: #1A1A1A;
+  border-radius: 500px;
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.main3__btn:hover::before {
+  height: 100%;
 }
 
 .main3__btn-text {
@@ -51,6 +67,13 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 140%;
+  color: #1A1A1A;
+  position: relative;
+  z-index: 1;
+  transition: color 0.35s ease;
+}
+
+.main3__btn:hover .main3__btn-text {
   color: #FFFFFF;
 }
 
@@ -64,6 +87,21 @@
   display: flex;
   gap: 12px;
   align-items: center;
+}
+
+/* ✨ inline(Business 옆) 버튼은 기본 숨김 (모바일에서만 표시) */
+.main3__nav-btns--inline {
+  display: none;
+}
+
+/* ✨ 슬라이더 아래 버튼은 기본 숨김 (모바일에서만 표시) */
+.main3__nav-btns--bottom {
+  display: none;
+}
+
+/* ✨ inline(Business 옆) 버튼은 기본 숨김 (모바일에서만 표시) */
+.main3__nav-btns--inline {
+  display: none;
 }
 
 .main3__nav-btn {
@@ -89,20 +127,24 @@
   border: 1px solid #D1D1D1;
 }
 
+.main3__nav-btn--prev img {
+  filter: brightness(0) saturate(100%) invert(68%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(96%) contrast(87%);
+}
+
 .main3__nav-btn--next {
   background-color: #1A1A1A;
+  border: none;
 }
 
-.main3__nav-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
+
+
+/* 슬라이더 래퍼 */
+.main3__slider-wrap {
+  /* .main3의 padding-left(130px)를 무시하고 페이지 왼쪽까지 확장 */
+  margin-left: -130px;
+  overflow: visible;
 }
 
-.main3__nav-btn:hover:not(:disabled) {
-  opacity: 0.7;
-}
-
-/* 슬라이더 */
 .main3__slider {
   overflow: visible;
 }
@@ -110,6 +152,8 @@
 .main3__track {
   display: flex;
   gap: 20px;
+  /* padding-left로 첫 카드가 130px 지점에서 시작 */
+  padding-left: 130px;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -190,7 +234,6 @@
   margin-bottom: 20px;
 }
 
-/* font10: 28px Semibold */
 .main3__card-name {
   font-family: 'Pretendard', sans-serif;
   font-size: 28px;
@@ -200,7 +243,6 @@
   margin-bottom: 8px;
 }
 
-/* font14: 20px Medium */
 .main3__card-desc {
   font-family: 'Pretendard', sans-serif;
   font-size: 20px;
@@ -210,7 +252,6 @@
   margin-bottom: 12px;
 }
 
-/* font15: 16px Regular */
 .main3__card-hover-text {
   font-family: 'Pretendard', sans-serif;
   font-size: 16px;
@@ -221,29 +262,76 @@
 
 /* 반응형 */
 @media (max-width: 1400px) {
-  .main3 { padding: 200px 0 0 80px; }
+  .main3 { padding: 140px 0 0 80px; }
   .main3__top { padding-right: 80px; }
+  .main3__slider-wrap { margin-left: -80px; }
+  .main3__track { padding-left: 80px; }
 }
 
 @media (max-width: 1024px) {
   .main3 { padding: 120px 0 0 40px; }
   .main3__top { padding-right: 40px; }
   .main3__title { font-size: 32px; }
+  .main3__slider-wrap { margin-left: -40px; }
+  .main3__track { padding-left: 40px; }
+  .main3__btn { padding: 16px 24px; }
 }
 
 @media (max-width: 768px) {
   .main3 { padding: 80px 0 0 20px; }
-  .main3__top { padding-right: 20px; }
+  .main3__top {
+    padding-right: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
   .main3__title { font-size: 26px; }
+  .main3__slider-wrap { margin-left: -20px; }
+  .main3__track { padding-left: 20px; }
+
+  .main3__top-left {
+    gap: 0;
+    width: 100%;
+  }
+
+  .main3__top-left > h2 {
+    margin-bottom: 20px;
+  }
+
+  /* ✨ Business 버튼 + 네비 버튼 같은 줄 */
+  .main3__btn-nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* ✨ 상단 nav 버튼 숨김 */
+  .main3__nav-btns--top { display: none; }
+
+  /* ✨ inline nav 버튼 표시 */
+  .main3__nav-btns--inline { display: flex; }
+}
+/* 아이콘 */
+.main3__btn-icon-wrap {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  z-index: 1;
 }
 
-/* 슬라이더 래퍼: 왼쪽 여백 포함 전체에서 overflow hidden */
-.main3__slider-wrap {
-  overflow: hidden;
-  margin-left: -130px;
-  padding-left: 130px;
+.main3__btn-icon-wrap img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.35s ease;
 }
 
-.main3__slider {
-  overflow: visible;
-}
+.main3__btn-icon-wrap .icon-default { opacity: 1; }
+.main3__btn-icon-wrap .icon-hover   { opacity: 0; }
+
+.main3__btn:hover .main3__btn-icon-wrap .icon-default { opacity: 0; }
+.main3__btn:hover .main3__btn-icon-wrap .icon-hover   { opacity: 1; }

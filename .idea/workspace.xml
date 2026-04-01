@@ -2,8 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4879a74d-1573-4280-aabd-9dcff326b98e" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/icon_arrow_hover.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/icon_checkbox.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_About.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_About2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_About3.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_About4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_About6.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_business.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_business_aircare.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_business_esg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_contact.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_esg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img_partners.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_ESG.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About5.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About6.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About7.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About/About7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Business/Business1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Business/Business1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Business/Business2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Business/Business2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Contact/Contact1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Contact/Contact1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Contact/Contact2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Contact/Contact2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Main/Main2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Partners/Partners1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Partners/Partners1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Partners/Partners2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Partners/Partners2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Main5.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Main5.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main3.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main3.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main4.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main5.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main5.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Main5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main5.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +95,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/components/Main" />
       <recent name="$PROJECT_DIR$/src/components/layout" />
       <recent name="$PROJECT_DIR$/src/components/layout/css" />
       <recent name="$PROJECT_DIR$/src" />

@@ -1,43 +1,152 @@
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import menuIcon from '../../assets/icon_menu.svg';
+import cancelIcon from '../../assets/icon_cancel.svg';
+import { ReactComponent as HivitsLogo } from '../../assets/logo_hivits.svg';
 import './Header.css';
 
-const NAV_ITEMS = ['About Hivits', 'Business', 'Partners'];
+const NAV_ITEMS = [
+  { name: 'About Hivits', path: '/about' },
+  { name: 'Business', path: '/business' },
+  { name: 'Partners', path: '/partners' },
+  { name: 'Contact Us', path: '/contact' },
+];
 
 function Header() {
+  const [isDark, setIsDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // 메뉴 열릴 때 스크롤 막기
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    // 페이지 이동 시 메뉴 닫기
+    setMenuOpen(false);
+    window.scrollTo(0, 0);
+
+    const handleScroll = () => {
+      const header = document.querySelector('.header');
+      if (!header) return;
+
+      const headerRect = header.getBoundingClientRect();
+      const headerCenterY = headerRect.top + headerRect.height / 2;
+      const sections = document.querySelectorAll('section, footer, main, article, [class*="section"], [class*="bg-"]');
+
+      let isOverDark = false;
+
+      sections.forEach((sec) => {
+        const secRect = sec.getBoundingClientRect();
+        if (headerCenterY >= secRect.top && headerCenterY <= secRect.bottom) {
+          const bgColor = window.getComputedStyle(sec).backgroundColor;
+          if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
+            const rgb = bgColor.match(/\d+/g);
+            if (rgb && rgb.length >= 3) {
+              const r = parseInt(rgb[0], 10);
+              const g = parseInt(rgb[1], 10);
+              const b = parseInt(rgb[2], 10);
+              const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+              if (brightness < 128) {
+                isOverDark = true;
+              }
+            }
+          }
+        }
+      });
+
+      setIsDark(isOverDark);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [location.pathname]);
+
   return (
-    <header className="header">
+    <>
+      <header className={`header ${isDark ? 'header--dark' : ''}`}>
 
-      {/* 로고 — 왼쪽 */}
-      <div className="header__logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 188.8 76.75" height="40">
-          <g fill="#1A1A1A">
-            <path d="M156.43,71.66c-3.04-3.39-4.56-8.86-4.56-16.4v-7.37h14.82v9.38c0,3.74,1.2,5.61,3.6,5.61,1.34,0,2.28-.39,2.81-1.18.53-.79.79-2.12.79-3.99,0-2.46-.29-4.49-.88-6.1-.58-1.61-1.33-2.95-2.24-4.03-.91-1.08-2.53-2.76-4.87-5.04l-6.49-6.49c-5.03-4.91-7.54-10.35-7.54-16.31,0-6.43,1.48-11.33,4.43-14.69,2.95-3.36,7.26-5.04,12.94-5.04,6.78,0,11.67,1.8,14.65,5.39,2.98,3.6,3.18,9.47,3.18,17.13h-14.21l.07-5.42c0-.99-.28-1.78-.83-2.37-.56-.58-1.33-.88-2.32-.88-1.17,0-2.05.32-2.63.96-.59.64-.88,1.52-.88,2.63,0,2.46,1.4,5,4.21,7.63l8.77,8.42c2.05,1.99,3.74,3.87,5.09,5.66,1.34,1.78,2.43,3.89,3.24,6.32.82,2.43,1.23,5.31,1.23,8.64,0,7.43-1.36,13.05-4.08,16.88-2.72,3.83-7.21,5.74-13.46,5.74-6.84,0-11.78-1.7-14.82-5.09Z"/>
-            <path d="M101.29,76.04V.7h14.56v75.34h-14.56Z"/>
-            <path d="M126.81,76.04V15.17h-8.95V.7h32.98v14.47h-8.95v60.87h-15.09Z"/>
-            <polygon points="84.09 .7 83.21 12.89 82.07 24.91 79.27 64.95 78.56 64.95 75.23 24.91 74.09 12.89 73.04 .7 58.74 .7 65.93 76.04 91.46 76.04 98.74 .7 84.09 .7"/>
-            <polygon points="40.56 0 38.89 6.22 49.02 6.22 50.69 0 40.56 0"/>
-            <polygon points="19.46 30.33 29.54 30.33 37.69 0 27.6 0 24.69 10.73 15.32 10.73 18.23 0 8.14 0 0 30.33 10.08 30.33 12.99 19.42 22.37 19.42 19.46 30.33"/>
-            <polygon points="42.37 30.33 48.34 7.99 38.56 7.99 32.59 30.33 42.37 30.33"/>
-          </g>
-        </svg>
+        {/* ✨ 햄버거 + 로고를 하나의 div로 묶어서 왼쪽 정렬 */}
+        <div className="header__left">
+          <button
+            className="header__hamburger"
+            aria-label="메뉴 열기"
+            onClick={() => setMenuOpen(true)}
+          >
+            <img
+              src={menuIcon}
+              alt="메뉴"
+              style={{ filter: isDark ? 'brightness(0) invert(1)' : 'none', width: '28px', height: '28px' }}
+            />
+          </button>
+          <div className="header__logo">
+            <Link to="/">
+              <HivitsLogo />
+            </Link>
+          </div>
+        </div>
+
+        <nav className="header__nav">
+          {NAV_ITEMS.slice(0, 3).map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`header__nav-item ${location.pathname === item.path ? 'header__nav-item--active' : ''}`}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="header__contact-wrap">
+          <Link to="/contact" className="header__contact">
+            Contact
+          </Link>
+        </div>
+
+      </header>
+
+      {/* ✨ 모바일 풀스크린 메뉴 오버레이 */}
+      <div className={`mobile-menu ${menuOpen ? 'mobile-menu--open' : ''}`}>
+
+        {/* 메뉴 상단: 로고 + 닫기 버튼 */}
+        <div className="mobile-menu__header">
+          <div className="mobile-menu__logo">
+            <Link to="/" onClick={() => setMenuOpen(false)}>
+              <HivitsLogo />
+            </Link>
+          </div>
+          <button
+            className="mobile-menu__close"
+            aria-label="메뉴 닫기"
+            onClick={() => setMenuOpen(false)}
+          >
+            <img src={cancelIcon} alt="닫기" width="28" height="28" />
+          </button>
+        </div>
+
+        {/* 메뉴 아이템 */}
+        <nav className="mobile-menu__nav">
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className="mobile-menu__item"
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
       </div>
-
-      {/* 네비게이션 — 가운데 */}
-      <nav className="header__nav">
-        {NAV_ITEMS.map((item) => (
-          <a key={item} href="#" className="header__nav-item">
-            {item}
-          </a>
-        ))}
-      </nav>
-
-      {/* Contact Us — 오른쪽 */}
-      <div className="header__contact-wrap">
-        <a href="#" className="header__contact">
-          Contact Us
-        </a>
-      </div>
-
-    </header>
+    </>
   );
 }
 

@@ -1,0 +1,194 @@
+.partners-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+  padding: 0 130px;
+  box-sizing: border-box;
+}
+
+.partners-list__inner {
+  width: 100%;
+  max-width: 1840px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 타이틀 */
+.partners-list__title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #1A1A1A;
+  margin: 0 0 52px 0;
+}
+
+/* 4열 그리드 */
+.partners-list__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* 카드 외부 wrapper — perspective 설정 */
+.partners-list__card {
+  position: relative;
+  aspect-ratio: 1 / 0.85;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+/* 카드 inner — 실제로 뒤집히는 요소 */
+.partners-list__card-front,
+.partners-list__card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 앞면 */
+.partners-list__card-front {
+  background-color: #F4F4F4;
+  transform: rotateY(0deg);
+}
+
+/* 뒷면 */
+.partners-list__card-back {
+  background-color: #1A1A1A;
+  transform: rotateY(180deg);
+  padding: 32px;
+  gap: 28px;
+  text-align: center;
+}
+
+/* hover 시 뒤집기 */
+.partners-list__card:hover .partners-list__card-front {
+  transform: rotateY(-180deg);
+}
+
+.partners-list__card:hover .partners-list__card-back {
+  transform: rotateY(0deg);
+}
+
+/* 앞면 로고 이미지 */
+.partners-list__logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* 로고 준비 전 임시 텍스트 */
+.partners-list__logo-placeholder {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #999;
+}
+
+/* 뒷면 로고명 */
+.partners-list__card-name {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #FFFFFF;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* 뒷면 설명 텍스트 */
+.partners-list__card-desc {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #A3A3A3;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* ════════════════════════════════════════
+   반응형 미디어쿼리
+   ════════════════════════════════════════ */
+
+/* ── 태블릿 (1024px 이하) ── */
+@media (max-width: 1024px) {
+  .partners-list {
+    padding: 0 60px;
+    margin-top: 120px;
+  }
+
+  .partners-list__title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .partners-list__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .partners-list__card-name {
+    font-size: 20px;
+  }
+
+  .partners-list__card-desc {
+    font-size: 14px;
+  }
+}
+
+/* ── 모바일 (768px 이하) ── */
+@media (max-width: 768px) {
+  .partners-list {
+    padding: 0 24px;
+    margin-top: 80px;
+  }
+
+  .partners-list__title {
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .partners-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .partners-list__card-back {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .partners-list__card-name {
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  .partners-list__card-desc {
+    font-size: 12px;
+    white-space: normal;
+  }
+}
+
+/* ── 소형 모바일 (480px 이하) ── */
+@media (max-width: 480px) {
+  .partners-list {
+    padding: 0 20px;
+  }
+
+  .partners-list__title {
+    font-size: 26px;
+  }
+
+  .partners-list__grid {
+    gap: 12px;
+  }
+}

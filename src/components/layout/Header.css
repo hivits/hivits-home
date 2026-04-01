@@ -19,12 +19,29 @@
   flex: 1;
 }
 
+/* ✨ 로고 크기 절대 고정 (찌그러짐 방지) ✨ */
 .header__logo svg {
-  height: 40px;
+  height: 40px !important;
+  min-height: 40px !important;
+  flex-shrink: 0 !important;
   width: auto;
+  fill: #1A1A1A;
+  transition: fill 0.3s ease;
 }
 
+.header__logo svg path {
+  fill: inherit;
+}
+
+/* =========================================
+   ✨ nav를 absolute로 중앙 고정
+   → 로고/contact 위치에 전혀 영향 없음
+   ========================================= */
 .header__nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -37,29 +54,39 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .header__nav-item {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 500;
-  line-height: 140%;
   color: #1A1A1A;
   text-decoration: none;
-  padding: 8px 24px;
+  padding: 8px 16px;
   border-radius: 500px;
-  transition: background 0.2s ease;
-  white-space: nowrap;
+  transition: color 0.3s ease, background 0.2s ease;
 }
 
 .header__nav-item:hover {
   background: rgba(200, 200, 200, 0.4);
 }
 
+.header__nav-item--active {
+  background-color: #1A1A1A;
+  color: #FFFFFF !important;
+  cursor: default;
+}
+
+.header__nav-item--active:hover {
+  background-color: #1A1A1A !important;
+}
+
 .header__contact-wrap {
   display: flex;
   flex: 1;
   justify-content: flex-end;
+  align-items: center; /* ✨ 수직 중앙 고정 */
 }
 
 .header__contact {
@@ -70,9 +97,181 @@
   color: #1A1A1A;
   text-decoration: none;
   white-space: nowrap;
-  transition: opacity 0.2s ease;
+  transition: color 0.3s ease, opacity 0.2s ease;
 }
 
 .header__contact:hover {
   opacity: 0.6;
+}
+
+/* =========================================
+   다크 모드 (어두운 배경 위)
+   ========================================= */
+
+.header--dark .header__logo svg {
+  fill: #FFFFFF !important;
+}
+
+.header--dark .header__nav {
+  background: rgba(26, 26, 26, 0.40);
+  border-color: rgba(0, 0, 0, 0.6);
+}
+
+.header--dark .header__nav-item {
+  color: #FFFFFF;
+}
+
+.header--dark .header__nav-item:hover {
+  background: rgba(100, 100, 100, 0.4);
+}
+
+.header--dark .header__nav-item--active {
+  background-color: #FFFFFF;
+  color: #1A1A1A !important;
+}
+
+.header--dark .header__nav-item--active:hover {
+  background-color: #FFFFFF !important;
+}
+
+.header--dark .header__contact {
+  color: #FFFFFF;
+}
+
+/* =========================================
+   반응형 미디어 쿼리 적용 (모바일)
+   ========================================= */
+
+.header__hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* ✨ 햄버거 + 로고 묶음 (데스크탑에서는 기존처럼 로고만 보임) */
+.header__left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    height: 120px;
+    padding: 0 24px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__logo svg {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .header__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__contact-wrap {
+    flex: none;
+    align-items: center;
+  }
+}
+
+/* =========================================
+   ✨ 모바일 풀스크린 메뉴 오버레이
+   ========================================= */
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FFFFFF;
+  z-index: 2000;
+  padding: 0 24px;
+  box-sizing: border-box;
+
+  /* 슬라이드 업 애니메이션 */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.mobile-menu--open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* 메뉴 상단: 로고 + 닫기 버튼 */
+.mobile-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px; /* ✨ 헤더와 동일한 높이 */
+}
+
+.mobile-menu__logo {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu__logo svg {
+  height: 40px !important;
+  width: auto;
+  fill: #1A1A1A !important;
+}
+
+.mobile-menu__logo svg path {
+  fill: #1A1A1A !important;
+}
+
+.mobile-menu__close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 메뉴 아이템 목록 */
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* ✨ 메뉴 간격 32px */
+  margin-top: 20px; /* ✨ 로고와의 간격 20px */
+}
+
+.mobile-menu__item {
+  font-family: 'Pretendard', 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1A1A1A;
+  text-decoration: none;
+}
+
+.mobile-menu__item:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+  }
 }

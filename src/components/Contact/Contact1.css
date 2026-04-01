@@ -1,24 +1,29 @@
-.main1 {
+.contact1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 120px 40px 40px 40px;
+
+  height: 100vh;
+  padding: 120px 40px 48px 40px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
 }
 
-.main1__hero {
+.contact1__hero {
   display: flex;
   width: 100%;
   max-width: 1840px;
-  aspect-ratio: 1840 / 800;
+  height: 100%;
   justify-content: center;
   align-items: center;
   border-radius: 32px;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.main1__hero-text {
+.contact1__hero-text {
   font-family: 'Pretendard', sans-serif;
   font-size: 52px;
   font-weight: 600;
@@ -26,4 +31,11 @@
   color: #FFFFFF;
   text-align: center;
   white-space: pre-line;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .contact1__hero-text {
+    font-size: 36px;
+  }
 }

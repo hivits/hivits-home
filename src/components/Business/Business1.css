@@ -1,0 +1,42 @@
+.business1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  padding: 120px 40px 48px 40px;
+  box-sizing: border-box;
+  background-color: #FFFFFF; /* 기존 배경색 유지 */
+}
+
+.business1__hero {
+  display: flex;
+  width: 100%;
+  max-width: 1840px;
+  height: 100%; /* 부모의 남은 높이를 꽉 채움 */
+  justify-content: center;
+  align-items: center;
+  border-radius: 32px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.business1__hero-text {
+  font-family: 'Pretendard', sans-serif; /* Main1과 동일한 폰트로 변경 */
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: pre-line;
+  margin: 0;
+}
+
+/* 기존 Business1에 있던 반응형 코드. Main1 구조에는 없지만 글자 크기 조절을 위해 필요하다면 유지하세요 */
+@media screen and (max-width: 768px) {
+  .business1__hero-text {
+    font-size: 36px;
+  }
+}
