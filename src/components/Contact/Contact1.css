@@ -21,6 +21,14 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  /* ✨ 이미지 줌아웃 애니메이션 */
+  animation: heroZoomOut 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* 텍스트가 올라올 수 있도록 overflow hidden 처리 */
+.contact1__hero-text-wrapper {
+  overflow: hidden;
 }
 
 .contact1__hero-text {
@@ -32,6 +40,33 @@
   text-align: center;
   white-space: pre-line;
   margin: 0;
+
+  /* ✨ 텍스트 아래→위 슬라이드업 애니메이션 */
+  animation: textSlideUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+}
+
+/* =========================================
+   키프레임
+   ========================================= */
+
+@keyframes heroZoomOut {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes textSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media screen and (max-width: 768px) {

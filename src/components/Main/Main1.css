@@ -4,27 +4,29 @@
   align-items: center;
 
   height: 100vh;
-  /* ✨ 아래쪽 여백을 80px -> 58px로 변경 */
   padding: 120px 40px 48px 40px;
   box-sizing: border-box;
 }
-
-/* 나머지 .main1__hero 등은 이전과 동일하게 유지! */
 
 .main1__hero {
   display: flex;
   width: 100%;
   max-width: 1840px;
-
-  /* ✨ 기존의 aspect-ratio: 1840 / 800; 은 삭제합니다! */
-  height: 100%; /* 부모(main1)의 남은 높이를 100% 꽉 채웁니다. */
-
+  height: 100%;
   justify-content: center;
   align-items: center;
   border-radius: 32px;
-  background-size: cover; /* 이미지가 찌그러지지 않고 꽉 차게 잘리도록 알아서 조절해 줍니다 */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  /* ✨ 이미지 줌아웃 애니메이션 */
+  animation: heroZoomOut 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* 텍스트가 올라올 수 있도록 overflow hidden 처리 */
+.main1__hero-text-wrapper {
+  overflow: hidden;
 }
 
 .main1__hero-text {
@@ -35,6 +37,36 @@
   color: #FFFFFF;
   text-align: center;
   white-space: pre-line;
+  margin: 0;
+
+  /* ✨ 텍스트 아래→위 슬라이드업 애니메이션 */
+  animation: textSlideUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+}
+
+/* =========================================
+   키프레임
+   ========================================= */
+
+/* 이미지: 살짝 크게 시작해서 정상 크기로 줌아웃 */
+@keyframes heroZoomOut {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* 텍스트: 아래에서 위로 슬라이드 + 페이드인 */
+@keyframes textSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* =========================================
@@ -43,6 +75,6 @@
 @media screen and (max-width: 768px) {
   .main1__hero-text {
     font-size: 36px;
-    font-weight: 600; /* Pretendard SemiBold */
+    font-weight: 600;
   }
 }

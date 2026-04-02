@@ -1,12 +1,33 @@
-import React from 'react';
-// 에셋 폴더에 추가해두신 svg 이미지 경로
+import React, { useEffect, useRef } from 'react';
 import imgAbout3 from '../../assets/img_About3.svg';
 import './About3.css';
 
 function About3() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // ✨ 섹션이 화면에 30% 이상 보이면 .is-visible 추가 → 슬라이드인 시작
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add('is-visible');
+          observer.disconnect(); // 한 번만 실행
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="about3">
-      {/* 1. 왼쪽 위 배경에 깔리는 거대한 Mission 텍스트 */}
+    <section className="about3" ref={sectionRef}>
+      {/* 1. 왼쪽에서 슬라이딩 등장하는 Mission 배경 텍스트 */}
       <div className="about3__bg-mission">Mission</div>
 
       <div className="about3__inner">
@@ -23,7 +44,7 @@ function About3() {
           </p>
         </div>
 
-        {/* 3. 오른쪽 영역: 이미지와 Vision 텍스트 */}
+        {/* 3. 오른쪽 영역: 이미지와 오른쪽에서 슬라이딩 등장하는 Vision 텍스트 */}
         <div className="about3__right">
           <img src={imgAbout3} alt="About Hivits Vision" className="about3__img" />
           <div className="about3__bg-vision">&amp; Vision</div>

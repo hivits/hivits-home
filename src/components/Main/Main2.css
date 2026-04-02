@@ -1,30 +1,53 @@
+/* ════════════════════════════════════════
+   Main2 — 스크롤 드리븐 애니메이션 레이아웃
+   섹션 높이 450vh / sticky 내부 100vh
+   ════════════════════════════════════════ */
+
 .main2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 140px 130px 0 130px;
+  position: relative;
+  height: 450vh;           /* 스크롤 여유 공간 확보 (250→450: 더 많이 스크롤해야 애니메이션 완료) */
+  background-color: #FFFFFF;
 }
 
+/* sticky 컨테이너 — 스크롤해도 화면에 고정 */
+.main2__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 130px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 내부 flex row — gap은 JS로 주입 */
 .main2__inner {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 80px;
   width: 100%;
+  /* gap은 인라인 스타일로 제어 */
 }
 
+/* 이미지 래퍼 — width는 JS로 주입, height는 고정 */
 .main2__img-wrap {
-  flex: 0 0 48%; /* 이미지 영역을 48%로 줄여서 텍스트 공간 확보 */
+  flex-shrink: 0;
+  height: 68vh;           /* 높이 고정 — 너비만 변함 */
+  overflow: hidden;
+  border-radius: 32px;
+  /* width는 인라인 스타일로 제어 */
 }
 
 .main2__img {
   width: 100%;
-  height: auto;
-  border-radius: 32px;
-  object-fit: cover;
+  height: 100%;           /* 래퍼 높이 채우기 */
+  object-fit: cover;      /* 비율 유지하며 크롭 */
+  object-position: center;
   display: block;
 }
 
+/* 텍스트 영역 — opacity / transform은 JS로 주입 */
 .main2__content {
   flex: 1;
   display: flex;
@@ -40,7 +63,7 @@
   color: #1A1A1A;
   margin-bottom: 20px;
   word-break: keep-all;
-  white-space: nowrap; /* 제목 줄바꿈 방지 */
+  white-space: nowrap;
 }
 
 .main2__desc {
@@ -100,11 +123,6 @@
   color: #FFFFFF;
 }
 
-.main2__btn-icon {
-  width: 20px;
-  height: 20px;
-}
-
 /* 아이콘 색상 전환 */
 .main2__btn-icon-wrap {
   position: relative;
@@ -127,12 +145,15 @@
 
 .main2__btn:hover .main2__btn-icon-wrap .icon-default { opacity: 0; }
 .main2__btn:hover .main2__btn-icon-wrap .icon-hover   { opacity: 1; }
+
+/* ════════════════════════════════════════
+   반응형 미디어쿼리
+   ════════════════════════════════════════ */
+
+/* ── 1400px 이하 ── */
 @media (max-width: 1400px) {
-  .main2 {
-    padding: 140px 80px 0 80px;
-  }
-  .main2__inner {
-    gap: 60px;
+  .main2__sticky {
+    padding: 0 80px;
   }
   .main2__title {
     font-size: 34px;
@@ -143,16 +164,10 @@
   }
 }
 
-/* 1200px 이하 */
+/* ── 1200px 이하 ── */
 @media (max-width: 1200px) {
-  .main2 {
-    padding: 160px 60px 0 60px;
-  }
-  .main2__inner {
-    gap: 48px;
-  }
-  .main2__img-wrap {
-    flex: 0 0 45%;
+  .main2__sticky {
+    padding: 0 60px;
   }
   .main2__title {
     font-size: 30px;
@@ -163,16 +178,10 @@
   }
 }
 
-/* 1024px 이하 */
+/* ── 1024px 이하 ── */
 @media (max-width: 1024px) {
-  .main2 {
-    padding: 120px 40px 0 40px;
-  }
-  .main2__inner {
-    gap: 36px;
-  }
-  .main2__img-wrap {
-    flex: 0 0 44%;
+  .main2__sticky {
+    padding: 0 40px;
   }
   .main2__title {
     font-size: 26px;
@@ -186,31 +195,68 @@
   }
 }
 
-/* 768px 이하 - 세로 배치 */
+/* ── 768px 이하 — 애니메이션 비활성화, 세로 배치 ── */
 @media (max-width: 768px) {
+  /* 섹션 높이를 자동으로 되돌려 sticky 무력화 */
   .main2 {
-    padding: 80px 20px 0 20px;
+    height: auto !important;
   }
+
+  .main2__sticky {
+    position: relative !important;
+    height: auto !important;
+    padding: 80px 20px 60px 20px;
+    align-items: flex-start;
+  }
+
   .main2__inner {
-    flex-direction: column;
-    gap: 32px;
-    align-items: stretch; /* ✨ 텍스트·이미지 동일한 왼쪽 정렬 */
+    flex-direction: column !important;
+    gap: 32px !important;   /* JS gap 무시 */
+    align-items: stretch;
   }
+
+  /* JS 인라인 width 무시 — 이미지 full width */
   .main2__img-wrap {
-    flex: none;
-    width: 100%;
+    width: 100% !important;
+    height: auto !important;   /* 모바일은 auto height */
     order: 2;
   }
+
+  .main2__img {
+    height: auto !important;   /* 모바일은 비율 그대로 */
+  }
+
+  /* JS 인라인 opacity / transform 무시 — 항상 보이게 */
   .main2__content {
     order: 1;
-    width: 100%; /* ✨ 이미지와 동일한 너비 */
+    width: 100% !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
+
   .main2__title {
     font-size: 26px;
     white-space: normal;
   }
+
   .main2__desc {
     font-size: 15px;
     margin-bottom: 28px;
+  }
+}
+
+/* ── 480px 이하 ── */
+@media (max-width: 480px) {
+  .main2__sticky {
+    padding: 60px 20px 48px 20px;
+  }
+
+  .main2__title {
+    font-size: 22px;
+  }
+
+  .main2__desc {
+    font-size: 14px;
+    margin-bottom: 24px;
   }
 }

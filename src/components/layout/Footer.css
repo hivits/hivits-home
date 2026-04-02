@@ -188,6 +188,18 @@
   margin: 0;
 }
 
+/* ── 개인정보처리방침 링크 ── */
+.footer__privacy-link {
+  color: #D1D1D1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.footer__privacy-link:hover {
+  color: #FFFFFF;
+}
+
 .footer__logo {
   width: 224px;
   height: 91px;

@@ -9,7 +9,10 @@ function Business1() {
         className="business1__hero"
         style={{ backgroundImage: `url(${imgBusiness})` }}
       >
-        <p className="business1__hero-text">Business</p>
+        {/* ✨ 텍스트 슬라이드업을 위한 overflow hidden 래퍼 */}
+        <div className="business1__hero-text-wrapper">
+          <p className="business1__hero-text">Business</p>
+        </div>
       </div>
     </section>
   );

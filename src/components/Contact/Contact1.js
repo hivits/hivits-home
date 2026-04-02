@@ -9,7 +9,10 @@ function Contact1() {
         className="contact1__hero"
         style={{ backgroundImage: `url(${imgContact})` }}
       >
-        <p className="contact1__hero-text">Contact Us</p>
+        {/* ✨ 텍스트 슬라이드업을 위한 overflow hidden 래퍼 */}
+        <div className="contact1__hero-text-wrapper">
+          <p className="contact1__hero-text">Contact Us</p>
+        </div>
       </div>
     </section>
   );

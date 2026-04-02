@@ -7,7 +7,7 @@
   padding: 0 130px; /* ✨ Main2와 완벽하게 동일한 좌우 130px 여백 적용! */
   box-sizing: border-box;
   padding-bottom: 0;
-  margin-bottom: 0;
+  margin-bottom: -200px; /* 푸터 margin-top(200px) 상쇄 → 이미지 하단과 푸터 사이 간격 제거 */
 }
 
 /* 최대 넓이 제한 */
@@ -105,6 +105,7 @@
   .business-portfolio {
     padding: 0 60px;
     margin-top: 120px;
+    margin-bottom: -120px; /* 푸터 1024px margin-top(120px) 상쇄 */
   }
 
   .business-portfolio__title {
@@ -123,6 +124,7 @@
   .business-portfolio {
     padding: 0 24px;
     margin-top: 80px;
+    margin-bottom: -100px; /* 푸터 768px margin-top(100px) 상쇄 */
   }
 
   .business-portfolio__title {

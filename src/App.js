@@ -21,6 +21,7 @@ import Partners1 from "./components/Partners/Partners1";
 import Partners2 from "./components/Partners/Partners2";
 import Contact1 from "./components/Contact/Contact1";
 import Contact2 from "./components/Contact/Contact2";
+import Privacy from "./components/Privacy/Privacy";
 
 function AppInner() {
   const location = useLocation();
@@ -85,6 +86,15 @@ function AppInner() {
             <main>
               <Contact1 />
               <Contact2 />
+            </main>
+          }
+        />
+
+        <Route
+          path="/privacy"
+          element={
+            <main>
+              <Privacy />
             </main>
           }
         />

@@ -1,0 +1,367 @@
+/* ════════════════════════════════════════
+   Privacy Page — Main2 레이아웃 시스템 기준
+   좌우 패딩: 130px / 타이틀: 40px 600 / 바디: 20px 400 #767676
+   ════════════════════════════════════════ */
+
+.privacy {
+  width: 100%;
+  padding: 140px 130px 0px 130px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+.privacy__inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ════════════════════════════════════════
+   헤더 영역 — 2단 (Main2와 동일한 구조)
+   왼쪽: 타이틀 + 소개 / 오른쪽: 정보 카드
+   ════════════════════════════════════════ */
+
+.privacy__header {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  align-items: flex-start;
+  margin-bottom: 80px;
+}
+
+/* 왼쪽 — 타이틀 + 소개 */
+.privacy__header-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.privacy__label {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #767676;
+  margin-bottom: 20px;
+}
+
+.privacy__main-title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #1A1A1A;
+  margin: 0 0 28px 0;
+  word-break: keep-all;
+}
+
+.privacy__intro {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 170%;
+  color: #767676;
+  margin: 0;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+/* 오른쪽 — 정보 카드 */
+.privacy__header-right {
+  flex: 0 0 340px;
+  padding-top: 60px; /* 라벨 높이만큼 맞춤 */
+}
+
+.privacy__info-card {
+  background-color: #F7F7F7;
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.privacy__info-label {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #767676;
+  margin: 0 0 8px 0;
+}
+
+.privacy__info-date {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin: 0 0 24px 0;
+}
+
+.privacy__info-line {
+  width: 100%;
+  height: 1px;
+  background-color: #E0E0E0;
+  margin-bottom: 20px;
+}
+
+.privacy__company-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.privacy__company-list p {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 160%;
+  color: #555555;
+  margin: 0;
+}
+
+.privacy__company-name {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #1A1A1A !important;
+  margin-bottom: 4px !important;
+}
+
+/* ════════════════════════════════════════
+   구분선
+   ════════════════════════════════════════ */
+
+.privacy__divider {
+  width: 100%;
+  height: 1px;
+  background-color: #E0E0E0;
+}
+
+/* ════════════════════════════════════════
+   조항 목록 — 2단 (왼쪽 제목 고정 / 오른쪽 내용)
+   ════════════════════════════════════════ */
+
+.privacy__sections {
+  display: flex;
+  flex-direction: column;
+}
+
+.privacy__section {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  padding: 52px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.privacy__section:last-child {
+  border-bottom: none;
+}
+
+/* 왼쪽: 조항 제목 고정 너비 */
+.privacy__section-left {
+  flex: 0 0 260px;
+}
+
+.privacy__section-title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 150%;
+  color: #1A1A1A;
+  margin: 0;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+/* 오른쪽: 내용 */
+.privacy__section-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.privacy__section-content {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 195%;
+  color: #767676;
+  margin: 0;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+/* ════════════════════════════════════════
+   반응형 미디어쿼리
+   Main2와 동일한 브레이크포인트 기준
+   ════════════════════════════════════════ */
+
+/* ── 1400px 이하 ── */
+@media (max-width: 1400px) {
+  .privacy {
+    padding: 140px 80px 140px 80px;
+  }
+
+  .privacy__header {
+    gap: 60px;
+  }
+
+  .privacy__header-right {
+    flex: 0 0 300px;
+  }
+
+  .privacy__section {
+    gap: 48px;
+  }
+
+  .privacy__section-left {
+    flex: 0 0 220px;
+  }
+}
+
+/* ── 1024px 이하 ── */
+@media (max-width: 1024px) {
+  .privacy {
+    padding: 120px 40px 120px 40px;
+  }
+
+  .privacy__header {
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .privacy__main-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .privacy__intro {
+    font-size: 16px;
+  }
+
+  .privacy__header-right {
+    flex: 0 0 260px;
+    padding-top: 50px;
+  }
+
+  .privacy__info-date {
+    font-size: 18px;
+  }
+
+  .privacy__section {
+    gap: 36px;
+    padding: 40px 0;
+  }
+
+  .privacy__section-left {
+    flex: 0 0 190px;
+  }
+
+  .privacy__section-title {
+    font-size: 16px;
+  }
+
+  .privacy__section-content {
+    font-size: 15px;
+  }
+}
+
+/* ── 768px 이하 — 세로 배치 ── */
+@media (max-width: 768px) {
+  .privacy {
+    padding: 80px 24px 100px 24px;
+  }
+
+  /* 헤더: 세로 전환 */
+  .privacy__header {
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .privacy__main-title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .privacy__label {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .privacy__intro {
+    font-size: 15px;
+    line-height: 170%;
+  }
+
+  .privacy__header-right {
+    flex: none;
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .privacy__info-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .privacy__info-date {
+    font-size: 17px;
+  }
+
+  /* 조항: 세로 전환 */
+  .privacy__section {
+    flex-direction: column;
+    gap: 16px;
+    padding: 36px 0;
+  }
+
+  .privacy__section-left {
+    flex: none;
+    width: 100%;
+  }
+
+  .privacy__section-title {
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  .privacy__section-content {
+    font-size: 14px;
+    line-height: 185%;
+  }
+}
+
+/* ── 480px 이하 ── */
+@media (max-width: 480px) {
+  .privacy {
+    padding: 60px 20px 80px 20px;
+  }
+
+  .privacy__main-title {
+    font-size: 24px;
+  }
+
+  .privacy__intro {
+    font-size: 14px;
+  }
+
+  .privacy__section-title {
+    font-size: 15px;
+  }
+
+  .privacy__section-content {
+    font-size: 13px;
+    line-height: 180%;
+  }
+
+  .privacy__company-list p {
+    font-size: 12px;
+  }
+
+  .privacy__company-name {
+    font-size: 14px !important;
+  }
+}

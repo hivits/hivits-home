@@ -84,11 +84,12 @@
 }
 
 /* ===================================================
-   카드 아래 본문 텍스트
+   카드 아래 본문 텍스트 — 슬라이드업 인터랙션
    =================================================== */
 .about4__bottom-text {
   margin-top: 60px;
   text-align: center;
+  overflow: hidden; /* ✨ 텍스트가 아래서 올라올 때 잘려 보이도록 */
 }
 
 .about4__bottom-text p {
@@ -99,6 +100,18 @@
   line-height: 140%;
   margin: 0;
   word-break: keep-all;
+
+  /* ✨ 초기 상태: 아래 숨겨둠 */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ✨ .is-visible 추가되면 제자리로 */
+.about4__bottom-text.is-visible p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 
@@ -137,13 +150,6 @@
 
 
 /* ── 모바일 (768px 이하) ── */
-/*
-  스크린샷 기준:
-  - 카드 내부: 가로 3분할 → 세로로 쌓기
-  - 구분선: 세로선 → 가로선으로 전환
-  - 각 섹션: 상하 패딩으로 간격 확보
-  - 하단 텍스트: 좌측 정렬
-*/
 @media (max-width: 768px) {
   .about4 {
     padding: 40px 20px;
@@ -154,7 +160,6 @@
     border-radius: 20px;
   }
 
-  /* 세로 방향으로 전환 */
   .about4__card-inner {
     flex-direction: column;
     height: auto;
@@ -162,7 +167,6 @@
     align-items: stretch;
   }
 
-  /* 각 섹션: 세로 배치, 충분한 패딩 */
   .about4__section {
     padding: 52px 32px;
     align-items: center;
@@ -179,7 +183,6 @@
     line-height: 160%;
   }
 
-  /* 구분선: 세로 → 가로선으로 */
   .about4__divider {
     width: 70%;
     height: 1px;
@@ -187,7 +190,6 @@
     margin: 0 auto;
   }
 
-  /* 하단 텍스트 */
   .about4__bottom-text {
     margin-top: 40px;
     text-align: left;

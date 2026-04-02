@@ -9,7 +9,10 @@ function Partners1() {
         className="partners1__hero"
         style={{ backgroundImage: `url(${imgPartners})` }}
       >
-        <p className="partners1__hero-text">Partners</p>
+        {/* ✨ 텍스트 슬라이드업을 위한 overflow hidden 래퍼 */}
+        <div className="partners1__hero-text-wrapper">
+          <p className="partners1__hero-text">Partners</p>
+        </div>
       </div>
     </section>
   );

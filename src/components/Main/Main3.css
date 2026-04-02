@@ -1,6 +1,6 @@
 .main3 {
-  padding: 140px 0 0 130px;
-  /* 화면 왼쪽 밖으로 나갈 때 스크롤바가 생기는 것을 방지합니다 */
+  /* top padding 제거 — Main2 sticky 하단 여백(140px)이 간격 역할 */
+  padding: 0 0 0 130px;
   overflow-x: hidden;
 }
 
@@ -89,18 +89,11 @@
   align-items: center;
 }
 
-/* ✨ inline(Business 옆) 버튼은 기본 숨김 (모바일에서만 표시) */
 .main3__nav-btns--inline {
   display: none;
 }
 
-/* ✨ 슬라이더 아래 버튼은 기본 숨김 (모바일에서만 표시) */
 .main3__nav-btns--bottom {
-  display: none;
-}
-
-/* ✨ inline(Business 옆) 버튼은 기본 숨김 (모바일에서만 표시) */
-.main3__nav-btns--inline {
   display: none;
 }
 
@@ -136,11 +129,8 @@
   border: none;
 }
 
-
-
 /* 슬라이더 래퍼 */
 .main3__slider-wrap {
-  /* .main3의 padding-left(130px)를 무시하고 페이지 왼쪽까지 확장 */
   margin-left: -130px;
   overflow: visible;
 }
@@ -152,7 +142,6 @@
 .main3__track {
   display: flex;
   gap: 20px;
-  /* padding-left로 첫 카드가 130px 지점에서 시작 */
   padding-left: 130px;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -262,14 +251,14 @@
 
 /* 반응형 */
 @media (max-width: 1400px) {
-  .main3 { padding: 140px 0 0 80px; }
+  .main3 { padding: 0 0 0 80px; }
   .main3__top { padding-right: 80px; }
   .main3__slider-wrap { margin-left: -80px; }
   .main3__track { padding-left: 80px; }
 }
 
 @media (max-width: 1024px) {
-  .main3 { padding: 120px 0 0 40px; }
+  .main3 { padding: 0 0 0 40px; }
   .main3__top { padding-right: 40px; }
   .main3__title { font-size: 32px; }
   .main3__slider-wrap { margin-left: -40px; }
@@ -278,7 +267,9 @@
 }
 
 @media (max-width: 768px) {
-  .main3 { padding: 80px 0 0 20px; }
+  /* 모바일: Main2 animation 없음 → 별도 간격 필요
+     Main2 하단 padding(60px) + Main3 top padding(20px) = 80px = Main4 mobile margin-top과 동일 */
+  .main3 { padding: 20px 0 0 20px; }
   .main3__top {
     padding-right: 20px;
     flex-direction: column;
@@ -299,7 +290,7 @@
     margin-bottom: 20px;
   }
 
-  /* ✨ Business 버튼 + 네비 버튼 같은 줄 */
+  /* Business 버튼 + 네비 버튼 같은 줄 */
   .main3__btn-nav-row {
     display: flex;
     align-items: center;
@@ -307,12 +298,13 @@
     width: 100%;
   }
 
-  /* ✨ 상단 nav 버튼 숨김 */
+  /* 상단 nav 버튼 숨김 */
   .main3__nav-btns--top { display: none; }
 
-  /* ✨ inline nav 버튼 표시 */
+  /* inline nav 버튼 표시 */
   .main3__nav-btns--inline { display: flex; }
 }
+
 /* 아이콘 */
 .main3__btn-icon-wrap {
   position: relative;
