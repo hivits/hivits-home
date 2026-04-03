@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import logoHivits from '../../assets/logo_hivits.svg';
 import './About7.css';
 
 function About7() {
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    const loadMap = () => {
+      const center = { lat: 37.48647, lng: 126.8932 };
+
+      const map = new window.google.maps.Map(mapRef.current, {
+        center,
+        zoom: 19,
+      });
+
+      new window.google.maps.Marker({
+        position: center,
+        map,
+        title: "하이비츠",
+      });
+    };
+
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
+    script.async = true;
+    script.onload = loadMap;
+
+    document.head.appendChild(script);
+  }, []);
+
+
   return (
     <section className="about7">
 
@@ -13,15 +40,7 @@ function About7() {
       <div className="about7__card">
 
         {/* 왼쪽: 구글 지도 */}
-        <div className="about7__map">
-          <iframe
-            title="하이비츠 위치"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.4!2d126.8878!3d37.4849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b61f1e47d9b6b%3A0x0!2z7ISc7Jq47Yq567OE7J207IucIOq1rO66uOuNlCDrlJTsp4DthqDroZwzMeyRkCA2Mg!5e0!3m2!1sko!2skr!4v1710000000000"
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
+        <div className="about7__map" ref={mapRef}  />
 
         {/* 오른쪽: 회사 정보 */}
         <div className="about7__info">
