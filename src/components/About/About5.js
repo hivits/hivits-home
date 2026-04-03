@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef } from 'react';
 import beforeIcon from '../../assets/icon_before.svg';
 import nextIcon from '../../assets/icon_next.svg';
 import './About5.css';
@@ -11,91 +11,28 @@ const HISTORY = [
   { year: '2026', desc: '- 펫모아 출시' },
 ];
 
-const STEP = 350;
+const STEP = 460; // 아이템 너비(380) + gap(80)
 
 function About5() {
-  const [currentOffset, setCurrentOffset] = useState(0);
-  const [maxOffset, setMaxOffset] = useState(0);
-  const sectionRef = useRef(null);
+  const [offset, setOffset] = useState(0);
   const trackRef = useRef(null);
-  const currentOffsetRef = useRef(0);
-  const maxOffsetRef = useRef(0);
+  const wrapRef = useRef(null);
 
-  const calcMax = useCallback(() => {
-    if (!sectionRef.current || !trackRef.current) return;
-    const sectionWidth = sectionRef.current.offsetWidth;
-    const trackScrollWidth = trackRef.current.scrollWidth;
-    const max = Math.max(0, trackScrollWidth - sectionWidth);
-    setMaxOffset(max);
-    maxOffsetRef.current = max;
-    setCurrentOffset(prev => {
-      const clamped = Math.min(prev, max);
-      currentOffsetRef.current = clamped;
-      return clamped;
-    });
-  }, []);
-
-  useEffect(() => {
-    calcMax();
-    window.addEventListener('resize', calcMax);
-    return () => window.removeEventListener('resize', calcMax);
-  }, [calcMax]);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    // ✨ capture: true + passive: false 조합으로 preventDefault 확실히 작동
-    const handleWheel = (e) => {
-      const offset = currentOffsetRef.current;
-      const max = maxOffsetRef.current;
-
-      // 섹션이 뷰포트 안에 있는지 체크
-      const rect = section.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
-      if (!inView) return;
-
-      const isScrollingDown = e.deltaY > 0;
-      const isScrollingUp = e.deltaY < 0;
-
-      // 슬라이더 양 끝에선 페이지 스크롤 허용
-      if (isScrollingDown && offset >= max) return;
-      if (isScrollingUp && offset <= 0) return;
-
-      // 그 외엔 페이지 스크롤 완전 차단
-      e.preventDefault();
-      e.stopPropagation();
-
-      const next = isScrollingDown
-        ? Math.min(offset + STEP, max)
-        : Math.max(offset - STEP, 0);
-
-      currentOffsetRef.current = next;
-      setCurrentOffset(next);
-    };
-
-    section.addEventListener('wheel', handleWheel, { passive: false, capture: true });
-    return () => section.removeEventListener('wheel', handleWheel, { capture: true });
-  }, []);
+  const getMax = () => {
+    if (!trackRef.current || !wrapRef.current) return 0;
+    return Math.max(0, trackRef.current.scrollWidth - wrapRef.current.offsetWidth);
+  };
 
   const handlePrev = () => {
-    const next = currentOffset <= 0
-      ? maxOffset
-      : Math.max(currentOffset - STEP, 0);
-    setCurrentOffset(next);
-    currentOffsetRef.current = next;
+    setOffset(prev => Math.max(prev - STEP, 0));
   };
 
   const handleNext = () => {
-    const next = currentOffset >= maxOffset
-      ? 0
-      : Math.min(currentOffset + STEP, maxOffset);
-    setCurrentOffset(next);
-    currentOffsetRef.current = next;
+    setOffset(prev => Math.min(prev + STEP, getMax()));
   };
 
   return (
-    <section className="about5" ref={sectionRef}>
+    <section className="about5">
 
       {/* 흰색 헤더 */}
       <div className="about5__header">
@@ -119,11 +56,11 @@ function About5() {
           </button>
         </div>
 
-        <div className="about5__slider-wrap">
+        <div className="about5__slider-wrap" ref={wrapRef}>
           <div
             className="about5__track"
             ref={trackRef}
-            style={{ transform: `translateX(-${currentOffset}px)` }}
+            style={{ transform: `translateX(-${offset}px)` }}
           >
             {HISTORY.map((item) => (
               <div key={item.year} className="about5__item">

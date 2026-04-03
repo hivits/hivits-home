@@ -4,7 +4,6 @@
 .about5 {
   width: 100%;
   background-color: #FFFFFF;
-  margin-top: 140px;
   box-sizing: border-box;
 }
 
@@ -15,8 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0 130px;
-  margin-bottom: 100px;
+  padding: 140px 130px 60px 130px;
 }
 
 .about5__title {
@@ -40,23 +38,22 @@
 }
 
 /* ===================================================
-   다크 슬라이더 섹션
+   다크 섹션
    =================================================== */
 .about5__dark {
   background-color: #1A1A1A;
   width: 100%;
-  padding: 80px 0;
+  padding: 60px 0;
   box-sizing: border-box;
   overflow: hidden;
-  position: relative;
 }
 
-/* 네비 버튼 — 오른쪽 130 */
+/* 네비 버튼 */
 .about5__nav {
   display: flex;
   justify-content: flex-end;
   padding-right: 130px;
-  margin-bottom: 60px;
+  margin-bottom: 48px;
   gap: 12px;
 }
 
@@ -69,7 +66,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .about5__nav-btn img {
@@ -77,38 +74,36 @@
   height: 24px;
 }
 
-/* 뒤로가기 */
 .about5__nav-btn--prev {
   background-color: transparent;
   border: 1px solid #D1D1D1;
 }
 
-/* 앞으로가기 */
 .about5__nav-btn--next {
   background-color: #FFFFFF;
   border: none;
 }
 
 /* ===================================================
-   ✨ 깔끔하게 수정된 슬라이더
+   슬라이더
    =================================================== */
 .about5__slider-wrap {
   width: 100%;
-  overflow: hidden; /* 영역 밖으로 나가는 슬라이드를 자연스럽게 숨김 */
+  overflow: hidden;
 }
 
 .about5__track {
   display: flex;
-  gap: 16px;
+  gap: 80px;
   padding-left: 130px;
   padding-right: 130px;
   width: max-content;
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-/* 각 아이템 */
+
 .about5__item {
   flex-shrink: 0;
-  width: 540px;
+  width: 380px;
   display: flex;
   flex-direction: column;
 }
@@ -133,150 +128,42 @@
 }
 
 /* ════════════════════════════════════════
-   반응형 미디어쿼리
+   반응형
    ════════════════════════════════════════ */
-
-/* ── 태블릿 (1024px 이하) ── */
 @media (max-width: 1024px) {
-  .about5 {
-    margin-top: 120px;
-  }
-
   .about5__header {
-    padding: 0 60px;
-    margin-bottom: 72px;
+    padding: 120px 60px 48px 60px;
     gap: 40px;
   }
-
-  .about5__title {
-    font-size: 32px;
-  }
-
-  .about5__desc {
-    font-size: 17px;
-  }
-
-  .about5__nav {
-    padding-right: 60px;
-  }
-
-  .about5__track {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  .about5__item {
-    width: 420px;
-  }
-
-  .about5__item-year {
-    font-size: 80px;
-  }
-
-  .about5__item-desc {
-    font-size: 17px;
-  }
+  .about5__title { font-size: 32px; }
+  .about5__desc { font-size: 17px; }
+  .about5__nav { padding-right: 60px; }
+  .about5__track { padding-left: 60px; padding-right: 60px; gap: 60px; }
+  .about5__item { width: 300px; }
+  .about5__item-year { font-size: 72px; }
+  .about5__item-desc { font-size: 17px; }
 }
 
-
-/* ── 모바일 (768px 이하) ── */
-/*
-  스크린샷 기준:
-  - 헤더: 타이틀 위, 설명 아래 세로 배치
-  - 다크 섹션: 네비 버튼 오른쪽 정렬
-  - 연도 크게 유지, 설명 14px
-  - 슬라이더 아이템 너비 축소
-*/
 @media (max-width: 768px) {
-  .about5 {
-    margin-top: 80px;
-  }
-
-  /* 헤더: 세로 배치 */
   .about5__header {
     flex-direction: column;
-    padding: 0 24px;
-    margin-bottom: 48px;
+    padding: 80px 24px 40px 24px;
     gap: 24px;
   }
-
-  .about5__title {
-    font-size: 22px;
-  }
-
-  .about5__desc {
-    font-size: 14px;
-    line-height: 160%;
-    word-break: keep-all;
-  }
-
-  /* 다크 섹션 */
-  .about5__dark {
-    padding: 48px 0;
-  }
-
-  /* 네비 버튼: 오른쪽 정렬 유지, 패딩 축소 */
-  .about5__nav {
-    padding-right: 24px;
-    margin-bottom: 40px;
-  }
-
-  .about5__nav-btn {
-    width: 52px;
-    height: 52px;
-  }
-
-  /* 슬라이더 */
-  .about5__track {
-    padding-left: 24px;
-    padding-right: 24px;
-    gap: 12px;
-  }
-
-  .about5__item {
-    width: 200px;
-  }
-
-  .about5__item-year {
-    font-size: 56px;
-    margin: 0 0 20px 0;
-  }
-
-  .about5__item-desc {
-    font-size: 14px;
-    line-height: 160%;
-  }
+  .about5__title { font-size: 22px; }
+  .about5__desc { font-size: 14px; line-height: 160%; }
+  .about5__nav { padding-right: 24px; margin-bottom: 32px; }
+  .about5__nav-btn { width: 52px; height: 52px; }
+  .about5__track { padding-left: 24px; padding-right: 24px; gap: 40px; }
+  .about5__item { width: 220px; }
+  .about5__item-year { font-size: 56px; margin: 0 0 20px 0; }
+  .about5__item-desc { font-size: 14px; line-height: 160%; }
 }
 
-
-/* ── 소형 모바일 (480px 이하) ── */
 @media (max-width: 480px) {
-  .about5__header {
-    padding: 0 20px;
-  }
-
-  .about5__title {
-    font-size: 26px;
-  }
-
-  .about5__desc {
-    font-size: 14px;
-  }
-
-  .about5__track {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .about5__item {
-    width: 170px;
-  }
-
-  .about5__item-year {
-    font-size: 48px;
-  }
-
-  .about5__item-desc {
-    font-size: 14px;
-  }
+  .about5__header { padding: 48px 20px 32px 20px; }
+  .about5__title { font-size: 26px; }
+  .about5__track { padding-left: 20px; padding-right: 20px; }
+  .about5__item { width: 180px; }
+  .about5__item-year { font-size: 48px; }
 }

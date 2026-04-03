@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4879a74d-1573-4280-aabd-9dcff326b98e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Privacy/Privacy.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Privacy/Privacy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/About/About1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/About/About1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/About/About3.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About3.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/About/About3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/About/About4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About4.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/About/About4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/About5.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About5.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/About/About5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Business/Business1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Business/Business1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Business/Business1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Business/Business1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Business/Business2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Business/Business2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Contact/Contact1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contact/Contact1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Contact/Contact1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contact/Contact1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main3.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main3.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main4.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Partners/Partners1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Partners/Partners1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Partners/Partners1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Partners/Partners1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Footer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
