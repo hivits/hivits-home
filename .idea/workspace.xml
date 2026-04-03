@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4879a74d-1573-4280-aabd-9dcff326b98e" name="변경" comment="" />
+    <list default="true" id="4879a74d-1573-4280-aabd-9dcff326b98e" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/src/components/Business/Business2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Business/Business2.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
