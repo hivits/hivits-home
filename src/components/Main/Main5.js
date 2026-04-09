@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import arrowIcon from '../../assets/icon_arrow.svg';
 import arrowHoverIcon from '../../assets/icon_arrow_hover.svg';
+
 import logoJong from '../../assets/logo_jong.svg';
 import logoDaiso from '../../assets/logo_daiso.svg';
 import logoModu from '../../assets/logo_modu.svg';
@@ -10,23 +11,35 @@ import logoKyungki from '../../assets/logo_kyungki.svg';
 import logoSejong from '../../assets/logo_sejong.svg';
 import logoSeoul from '../../assets/logo_seoul.svg';
 import logoDaejun from '../../assets/logo_daejun.svg';
-import logoHana from '../../assets/logo_hana.svg';
+import logoChungnam from '../../assets/logo_chungnam.svg';
+import logoBugyung from '../../assets/logo_bugyung.svg';
+import logoKoreatech from '../../assets/logo_koreatech.svg';
+import logoYonsei from '../../assets/logo_yonsei.svg';
+import logoGukbang from '../../assets/logo_gukbang.svg';
+import logoUseplace from '../../assets/logo_useplace.svg';
+import logoPolice from '../../assets/logo_police.svg';
 import './Main5.css';
 
 const ROW1 = [
-  { id: 1, src: logoJong,   alt: '종근당' },
-  { id: 2, src: logoDaiso,  alt: '다이소' },
-  { id: 3, src: logoModu,   alt: '모두투어' },
-  { id: 4, src: logoKorea,  alt: '대한민국국회' },
-  { id: 5, src: logoKunguk, alt: '건국대학교병원' },
+  { id: 1,  src: logoJong,      alt: '종근당' },
+  { id: 2,  src: logoDaiso,     alt: '다이소' },
+  { id: 3,  src: logoModu,      alt: '모두투어' },
+  { id: 4,  src: logoKorea,     alt: '대한민국국회' },
+  { id: 5,  src: logoKunguk,    alt: '건국대학교병원' },
+  { id: 6,  src: logoBugyung,   alt: '부경대학교' },
+  { id: 7,  src: logoKoreatech, alt: '한국정보기술단' },
+  { id: 8,  src: logoPolice,    alt: '서울종암경찰서' },
 ];
 
 const ROW2 = [
-  { id: 6,  src: logoKyungki, alt: '경기도교육청' },
-  { id: 7,  src: logoSejong,  alt: '세종특별자치시교육청' },
-  { id: 8,  src: logoSeoul,   alt: '서울시설공단' },
-  { id: 9,  src: logoDaejun,  alt: '대전광역시교육청' },
-  { id: 10, src: logoHana,    alt: '하나투어' },
+  { id: 9,  src: logoKyungki,  alt: '경기도교육청' },
+  { id: 10, src: logoSejong,   alt: '세종특별자치시교육청' },
+  { id: 11, src: logoSeoul,    alt: '서울시설공단' },
+  { id: 12, src: logoDaejun,   alt: '대전광역시교육청' },
+  { id: 13, src: logoYonsei,   alt: '연세올바른재활의학과의원' },
+  { id: 14, src: logoGukbang,  alt: '국방홍보원' },
+  { id: 15, src: logoUseplace, alt: '유즈플레이스' },
+  { id: 16, src: logoChungnam, alt: '충남대학교' },
 ];
 
 function LogoRow({ logos, direction }) {

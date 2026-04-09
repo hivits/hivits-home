@@ -64,7 +64,7 @@ function About7() {
             </div>
             <div className="about7__detail-item">
               <p className="about7__detail-label">대표전화</p>
-              <p className="about7__detail-value">010-6422-6028</p>
+              <p className="about7__detail-value">02-3281-8880</p>
             </div>
             <div className="about7__detail-item">
               <p className="about7__detail-label">사업자번호</p>

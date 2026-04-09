@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './index.css';
+import iconBtn from './assets/icon_btn.svg';
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -22,6 +24,92 @@ import Partners2 from "./components/Partners/Partners2";
 import Contact1 from "./components/Contact/Contact1";
 import Contact2 from "./components/Contact/Contact2";
 import Privacy from "./components/Privacy/Privacy";
+
+/* =====================
+   맨 위로 버튼 컴포넌트
+===================== */
+function ScrollToTopButton() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isOverFooter, setIsOverFooter] = useState(false);
+
+  useEffect(() => {
+    // 스크롤 200px 이상이면 버튼 표시
+    const handleScroll = () => {
+      setIsVisible(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // 푸터에 닿으면 버튼 색상 변경
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsOverFooter(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // 푸터 위: 흰색 배경 + 다크 아이콘 / 그 외: 다크 배경 + 흰색 아이콘
+  const bgColor = isOverFooter
+    ? isHovered ? 'rgba(245, 245, 245, 1)' : 'rgba(255, 255, 255, 0.7)'
+    : isHovered ? 'rgba(26, 26, 26, 0.9)' : 'rgba(26, 26, 26, 0.7)';
+
+  const borderColor = isOverFooter
+    ? '1px solid rgba(26, 26, 26, 0.15)'
+    : '1px solid rgba(255, 255, 255, 0.12)';
+
+  return (
+    <button
+      onClick={scrollToTop}
+      title="맨 위로"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        position: 'fixed',
+        bottom: '40px',
+        right: '40px',
+        width: '50px',
+        height: '50px',
+        borderRadius: '50%',
+        backgroundColor: bgColor,
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        border: borderColor,
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: isVisible ? 1 : 0,
+        visibility: isVisible ? 'visible' : 'hidden',
+        transition: 'opacity 0.3s ease, visibility 0.3s ease, background-color 0.2s ease, border 0.2s ease',
+        zIndex: 9999,
+        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)',
+      }}
+    >
+      <img
+        src={iconBtn}
+        alt="위로"
+        style={{
+          width: '22px',
+          height: '22px',
+          /* 푸터 위에선 아이콘을 다크 컬러로 반전 */
+          filter: isOverFooter ? 'brightness(0)' : 'none',
+          transition: 'filter 0.2s ease',
+        }}
+      />
+    </button>
+  );
+}
 
 function AppInner() {
   const location = useLocation();
@@ -102,6 +190,9 @@ function AppInner() {
 
       {/* 비즈니스 페이지에서만 이미지와 푸터 사이 간격 없애기 */}
       <Footer noMargin={isBusinessPage} />
+
+      {/* 맨 위로 버튼 - 모든 페이지에서 공통으로 표시 */}
+      <ScrollToTopButton />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import menuIcon from '../../assets/icon_menu.svg';
 import cancelIcon from '../../assets/icon_cancel.svg';
 import { ReactComponent as HivitsLogo } from '../../assets/logo_hivits.svg';
@@ -16,6 +16,7 @@ function Header() {
   const [isDark, setIsDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // 메뉴 열릴 때 스크롤 막기
   useEffect(() => {
@@ -68,6 +69,16 @@ function Header() {
     };
   }, [location.pathname]);
 
+  // 로고 클릭 핸들러: 홈이면 새로고침, 다른 페이지면 홈으로 이동
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      window.location.reload();
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <>
       <header className={`header ${isDark ? 'header--dark' : ''}`}>
@@ -86,9 +97,10 @@ function Header() {
             />
           </button>
           <div className="header__logo">
-            <Link to="/">
+            {/* 홈이면 새로고침, 다른 페이지면 홈으로 이동 */}
+            <a href="/" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
               <HivitsLogo />
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -118,9 +130,9 @@ function Header() {
         {/* 메뉴 상단: 로고 + 닫기 버튼 */}
         <div className="mobile-menu__header">
           <div className="mobile-menu__logo">
-            <Link to="/" onClick={() => setMenuOpen(false)}>
+            <a href="/" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
               <HivitsLogo />
-            </Link>
+            </a>
           </div>
           <button
             className="mobile-menu__close"

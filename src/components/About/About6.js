@@ -5,17 +5,31 @@ import './About6.css';
 const MAP_DATA = [
   {
     id: 'seoul',
-    top: '30%',
-    left: '38%',
-    regionTitle: '서울,인천 근로자',
-    count: '200명',
+    top: '27%',
+    left: '40%',
+    regionTitle: '서울 근로자',
+    count: '30명',
   },
   {
-    id: 'jeolla',
+    id: 'incheon',
+    top: '29%',
+    left: '34%',
+    regionTitle: '인천/부천 근로자',
+    count: '10명',
+  },
+  {
+    id: 'busan',
     top: '72%',
-    left: '32%',
-    regionTitle: '전라,광주 근로자',
-    count: '120명',
+    left: '58%',
+    regionTitle: '부산 근로자',
+    count: '10명',
+  },
+  {
+    id: 'daegu',
+    top: '58%',
+    left: '57%',
+    regionTitle: '대구/경북 근로자',
+    count: '80명',
   },
 ];
 
@@ -58,7 +72,6 @@ function About6() {
                     <p className="about6__tooltip-region">{point.regionTitle}</p>
                     <p className="about6__tooltip-count">{point.count}</p>
                   </div>
-
                 </div>
               )}
             </div>

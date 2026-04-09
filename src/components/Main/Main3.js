@@ -44,15 +44,14 @@ const CARDS = [
   },
 ];
 
-const CARD_WIDTH = 500;
 const CARD_GAP = 20;
-const STEP = CARD_WIDTH + CARD_GAP; // 520px — 항상 이 거리만큼만 이동
 
 function Main3() {
   const navigate = useNavigate();
   const [stepIndex, setStepIndex] = useState(0);
   const [maxSteps, setMaxSteps] = useState(0);
   const [maxOffset, setMaxOffset] = useState(0);
+  const [step, setStep] = useState(520); // 실제 카드 크기 기반으로 동적 계산
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
 
@@ -62,14 +61,22 @@ function Main3() {
     const sectionWidth = sectionRef.current.offsetWidth;
     const trackScrollWidth = trackRef.current.scrollWidth;
 
+    // 실제 첫 번째 카드 DOM 크기로 STEP 계산
+    const firstCard = trackRef.current.querySelector('.main3__card');
+    const cardWidth = firstCard ? firstCard.offsetWidth : 500;
+    const dynamicStep = cardWidth + CARD_GAP;
+    setStep(dynamicStep);
+
     // 마지막 카드 오른쪽에 20px 여백이 남는 지점
     const max = Math.max(0, trackScrollWidth - sectionWidth + 20);
     setMaxOffset(max);
 
-    // 최대 이동 횟수: max를 STEP으로 나눈 올림값
-    // (마지막 스텝은 max에 맞춰 clamp되므로 횟수만 맞으면 됨)
-    const steps = Math.ceil(max / STEP);
+    // 최대 이동 횟수
+    const steps = Math.ceil(max / dynamicStep);
     setMaxSteps(steps);
+
+    // 화면 크기가 바뀌면 현재 stepIndex가 새 maxSteps를 넘지 않도록 보정
+    setStepIndex((prev) => Math.min(prev, steps));
   }, []);
 
   useEffect(() => {
@@ -78,11 +85,10 @@ function Main3() {
     return () => window.removeEventListener('resize', calcMax);
   }, [calcMax]);
 
-  // stepIndex → offset 계산
-  // 마지막 스텝일 때만 maxOffset으로 정확히 맞춤, 나머지는 항상 520px 단위
+  // stepIndex → offset 계산 (실제 카드 크기 기반 step 사용)
   const offset = stepIndex >= maxSteps
     ? maxOffset
-    : stepIndex * STEP;
+    : stepIndex * step;
 
   const isFirst = stepIndex === 0;
   const isLast = stepIndex >= maxSteps;
@@ -104,7 +110,7 @@ function Main3() {
             <h2 className="main3__title">
               더 나은 세상을 향한<br />하이비츠의 다섯 가지 이야기
             </h2>
-            {/* ✨ Business 버튼 + 네비 버튼 같은 줄 (모바일) */}
+            {/* Business 버튼 + 네비 버튼 같은 줄 (모바일) */}
             <div className="main3__btn-nav-row">
               <Link to="/business" className="main3__btn">
                 <span className="main3__btn-text">Business</span>

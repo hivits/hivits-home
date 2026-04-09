@@ -2,7 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4879a74d-1573-4280-aabd-9dcff326b98e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Partners/Partners_bugyung.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Partners/Partners_chungnam.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Partners/Partners_gukbang.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Partners/Partners_koreatech.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Partners/Partners_kpr.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Partners/Partners_police.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Partners/Partners_useplace.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Partners/Partners_yonsei.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_bugyung.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_chungnam.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_gukbang.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_koreatech.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_kpr.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_police.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_useplace.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo_yonsei.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/About5.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About5.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/About5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/About6.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/About7.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contact/Contact2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contact/Contact2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main3.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main3.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main4.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main5.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main5.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Partners/Partners2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Partners/Partners2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Header.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,11 +69,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/assets/Partners" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/components/Main" />
       <recent name="$PROJECT_DIR$/src/components/layout" />
-      <recent name="$PROJECT_DIR$/src/components/layout/css" />
     </key>
   </component>
   <component name="RunManager">
