@@ -60,7 +60,7 @@ function Footer({ noMargin = false }) {
       <div className="footer__bottom">
         <div className="footer__legal">
           <p className="footer__legal-text">
-            사업자등록번호: 113-82-05802 | 대표: 최찬숙 | 주소: 서울 구로구 디지털로31길 62, 1013, 1014호 (구로동,아티스포럼)
+            사업자등록번호: 788-86-01781 | 대표: 최찬숙 | 주소: 서울 구로구 디지털로31길 62, 1013, 1014호 (구로동,아티스포럼)
           </p>
           <p className="footer__legal-text">
             대표 번호: 02-3281-8880 | 이메일: hivits@naver.com | <Link to="/privacy" className="footer__privacy-link">개인정보처리방침</Link>
