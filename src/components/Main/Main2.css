@@ -5,7 +5,7 @@
 
 .main2 {
   position: relative;
-  height: 450vh;           /* 스크롤 여유 공간 확보 (250→450: 더 많이 스크롤해야 애니메이션 완료) */
+  height: 250vh;           /* 스크롤 여유 공간 확보 (250→450: 더 많이 스크롤해야 애니메이션 완료) */
   background-color: #FFFFFF;
 }
 

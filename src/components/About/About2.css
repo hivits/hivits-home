@@ -1,13 +1,10 @@
 .about2 {
   position: relative;
   width: 100%;
-  /* ✨ 스크롤 저항감 부여: 300vh -> 500vh로 대폭 늘림 */
-  /* 사용자가 화면에 더 오래 머물며 메시지를 읽게 만듭니다. */
-  height: 500vh;
-  background-color: #000;
+  height: 300vh;
+  background-color: #e8e8e8;
 }
 
-/* 화면에 꽉 차게 찰칵 고정되는 컨테이너 */
 .about2__sticky {
   position: sticky;
   top: 0;
@@ -16,7 +13,6 @@
   overflow: hidden;
 }
 
-/* 배경 이미지 */
 .about2__bg {
   position: absolute;
   top: 0;
@@ -33,7 +29,6 @@
   will-change: transform;
 }
 
-/* 글자들이 쌓이는 전체 구역 */
 .about2__content {
   position: absolute;
   top: 50%;
@@ -51,24 +46,17 @@
   gap: 32px;
 }
 
-/* 텍스트 블록의 기본 애니메이션 틀 */
 .about2__text-step {
   opacity: 0;
-  /* ✨ 등장할 때 이동하는 거리를 30px -> 60px로 늘려 모션 자체를 더 크게 만듦 */
   transform: translateY(60px);
-  /* ✨ 속도를 1s -> 1.5s로 늦추고 부드러운 곡선(cubic-bezier) 적용 */
   transition: opacity 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* 스크롤이 도달해 'active' 클래스가 붙으면 제자리 안착 */
 .about2__text-step.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ================== 폰트 스타일 ================== */
-
-/* 1번 제목 */
 .about2__title {
   font-family: 'Pretendard', sans-serif;
   font-size: 44px;
@@ -77,7 +65,6 @@
   margin: 0;
 }
 
-/* 2번, 3번 텍스트를 묶어주는 그룹 */
 .about2__text-group {
   display: flex;
   flex-direction: column;
@@ -85,7 +72,6 @@
   gap: 8px;
 }
 
-/* 2번 서브타이틀 */
 .about2__subtitle {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
@@ -94,7 +80,6 @@
   margin: 0;
 }
 
-/* 3번 본문 설명 */
 .about2__description {
   font-family: 'Pretendard', sans-serif;
   font-size: 20px;
@@ -103,13 +88,11 @@
   margin: 0;
 }
 
-/* 줄바꿈 모바일 대응 */
 .about2__title br,
 .about2__description br {
   display: block;
 }
 
-/* ================== 반응형 ================== */
 @media screen and (max-width: 1024px) {
   .about2__title { font-size: 36px; }
   .about2__content { gap: 32px; }
