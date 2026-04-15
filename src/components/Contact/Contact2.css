@@ -91,6 +91,26 @@
   color: #A3A3A3;
 }
 
+/* 에러 상태 인풋 */
+.contact-form__input--error {
+  border: 1.5px solid #E53935;
+  background-color: #FFF5F5;
+}
+
+/* 에러 메시지 */
+.contact-form__error-msg {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #E53935;
+  margin-top: -8px;
+}
+
+/* 동의 에러 상태 */
+.contact-form__agree--error .contact-form__agree-text {
+  color: #E53935;
+}
+
 /* 텍스트에리어 */
 .contact-form__textarea {
   width: 100%;
