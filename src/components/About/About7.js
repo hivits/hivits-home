@@ -68,7 +68,7 @@ function About7() {
             </div>
             <div className="about7__detail-item">
               <p className="about7__detail-label">사업자번호</p>
-              <p className="about7__detail-value">113-82-05802</p>
+              <p className="about7__detail-value">788-86-01781</p>
             </div>
           </div>
 

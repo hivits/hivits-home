@@ -38,7 +38,7 @@ function Footer({ noMargin = false }) {
             {"어떤 문의든 편하게 연락 주시면 빠르게 답변드리겠습니다.\n하이비츠의 여정에 함께해 주세요."}
           </p>
           <p className="footer__email">
-            ✉️ 고객지원 및 상담 : hivits01@hi-vits.com
+            ✉️ 고객지원 및 상담 : hivits@naver.com
           </p>
         </div>
 
