@@ -74,10 +74,26 @@
   flex-direction: column;
   gap: 8px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+  border: 2px solid transparent;
+}
+
+.admin-dash__stat-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+  transform: translateY(-1px);
+}
+
+.admin-dash__stat-card--active {
+  border-color: #1A1A1A;
 }
 
 .admin-dash__stat-card--new {
   background: #1A1A1A;
+}
+
+.admin-dash__stat-card--new-active {
+  opacity: 0.85;
 }
 
 .admin-dash__stat-label {
@@ -100,7 +116,15 @@
   color: #fff;
 }
 
-/* ── 필터 탭 ── */
+/* ── 현재 필터 라벨 ── */
+.admin-dash__filter-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 16px;
+}
+
+/* ── 필터 탭 (사용 안 함 — 카드로 대체) ── */
 .admin-dash__filters {
   display: flex;
   gap: 8px;
@@ -165,6 +189,64 @@
 .admin-dash__row:last-child td { border-bottom: none; }
 
 .admin-dash__name { font-weight: 600; }
+
+/* ── 더보기 버튼 & 드롭다운 ── */
+.admin-dash__more-cell {
+  position: relative;
+  width: 40px;
+  text-align: center;
+}
+
+.admin-dash__more-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #A3A3A3;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.admin-dash__more-btn:hover {
+  background-color: #F0F0F0;
+  color: #1A1A1A;
+}
+
+.admin-dash__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  background: #fff;
+  border: 1px solid #E5E5E5;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+  z-index: 100;
+  min-width: 120px;
+  overflow: hidden;
+}
+
+.admin-dash__dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.admin-dash__dropdown-item:hover {
+  background-color: #F5F5F5;
+}
+
+.admin-dash__dropdown-item--danger {
+  color: #E53935;
+}
 
 .admin-dash__date {
   font-size: 13px;

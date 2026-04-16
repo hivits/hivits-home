@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabase';
 import logo from '../../assets/logo_hivits.svg';
@@ -8,12 +8,13 @@ function AdminDashboard() {
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
+  const [openMenuId, setOpenMenuId] = useState(null);
+  const menuRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchInquiries();
 
-    // 실시간 구독
     const channel = supabase
       .channel('inquiries')
       .on('postgres_changes', { event: '*', schema: 'public', table: 'inquiries' }, () => {
@@ -22,6 +23,17 @@ function AdminDashboard() {
       .subscribe();
 
     return () => supabase.removeChannel(channel);
+  }, []);
+
+  // 외부 클릭 시 더보기 메뉴 닫기
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpenMenuId(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const fetchInquiries = async () => {
@@ -38,8 +50,17 @@ function AdminDashboard() {
     navigate('/admin/login');
   };
 
-  const filtered = filter === 'all' ? inquiries : inquiries.filter((i) => i.status === filter);
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
+    if (!window.confirm('이 문의를 삭제하시겠습니까?')) return;
+    await supabase.from('inquiries').delete().eq('id', id);
+    setInquiries((prev) => prev.filter((i) => i.id !== id));
+    setOpenMenuId(null);
+  };
+
   const newCount = inquiries.filter((i) => i.status === 'new').length;
+  const repliedCount = inquiries.length - newCount;
+  const filtered = filter === 'all' ? inquiries : inquiries.filter((i) => i.status === filter);
 
   const formatDate = (str) => {
     if (!str) return '-';
@@ -58,31 +79,36 @@ function AdminDashboard() {
       </header>
 
       <main className="admin-dash__main">
+        {/* 통계 카드 — 클릭 시 필터 적용 */}
         <div className="admin-dash__stats">
-          <div className="admin-dash__stat-card">
+          <div
+            className={`admin-dash__stat-card${filter === 'all' ? ' admin-dash__stat-card--active' : ''}`}
+            onClick={() => setFilter('all')}
+          >
             <span className="admin-dash__stat-label">전체 문의</span>
             <span className="admin-dash__stat-value">{inquiries.length}</span>
           </div>
-          <div className="admin-dash__stat-card admin-dash__stat-card--new">
+          <div
+            className={`admin-dash__stat-card admin-dash__stat-card--new${filter === 'new' ? ' admin-dash__stat-card--new-active' : ''}`}
+            onClick={() => setFilter('new')}
+          >
             <span className="admin-dash__stat-label">신규 문의</span>
             <span className="admin-dash__stat-value">{newCount}</span>
           </div>
-          <div className="admin-dash__stat-card">
+          <div
+            className={`admin-dash__stat-card${filter === 'replied' ? ' admin-dash__stat-card--active' : ''}`}
+            onClick={() => setFilter('replied')}
+          >
             <span className="admin-dash__stat-label">답변 완료</span>
-            <span className="admin-dash__stat-value">{inquiries.length - newCount}</span>
+            <span className="admin-dash__stat-value">{repliedCount}</span>
           </div>
         </div>
 
-        <div className="admin-dash__filters">
-          {[['all', '전체'], ['new', '신규'], ['replied', '답변 완료']].map(([val, label]) => (
-            <button
-              key={val}
-              className={`admin-dash__filter-btn${filter === val ? ' admin-dash__filter-btn--active' : ''}`}
-              onClick={() => setFilter(val)}
-            >
-              {label}
-            </button>
-          ))}
+        {/* 현재 필터 표시 */}
+        <div className="admin-dash__filter-label">
+          {filter === 'all' && `전체 문의 ${inquiries.length}건`}
+          {filter === 'new' && `신규 문의 ${newCount}건`}
+          {filter === 'replied' && `답변 완료 ${repliedCount}건`}
         </div>
 
         {loading ? (
@@ -90,7 +116,7 @@ function AdminDashboard() {
         ) : filtered.length === 0 ? (
           <div className="admin-dash__empty">문의가 없습니다.</div>
         ) : (
-          <div className="admin-dash__table-wrap">
+          <div className="admin-dash__table-wrap" ref={menuRef}>
             <table className="admin-dash__table">
               <thead>
                 <tr>
@@ -100,11 +126,16 @@ function AdminDashboard() {
                   <th>이메일</th>
                   <th>연락처</th>
                   <th>접수일시</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((item) => (
-                  <tr key={item.id} className="admin-dash__row" onClick={() => navigate(`/admin/inquiry/${item.id}`)}>
+                  <tr
+                    key={item.id}
+                    className="admin-dash__row"
+                    onClick={() => navigate(`/admin/inquiry/${item.id}`)}
+                  >
                     <td>
                       <span className={`admin-dash__badge admin-dash__badge--${item.status}`}>
                         {item.status === 'new' ? '신규' : '답변 완료'}
@@ -115,6 +146,27 @@ function AdminDashboard() {
                     <td>{item.email}</td>
                     <td>{item.phone}</td>
                     <td className="admin-dash__date">{formatDate(item.created_at)}</td>
+                    <td className="admin-dash__more-cell" onClick={(e) => e.stopPropagation()}>
+                      <button
+                        className="admin-dash__more-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenMenuId(openMenuId === item.id ? null : item.id);
+                        }}
+                      >
+                        ···
+                      </button>
+                      {openMenuId === item.id && (
+                        <div className="admin-dash__dropdown">
+                          <button
+                            className="admin-dash__dropdown-item admin-dash__dropdown-item--danger"
+                            onClick={(e) => handleDelete(e, item.id)}
+                          >
+                            삭제하기
+                          </button>
+                        </div>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
