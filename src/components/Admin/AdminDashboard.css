@@ -27,10 +27,8 @@
 }
 
 .admin-dash__logo {
-  font-size: 18px;
-  font-weight: 800;
-  color: #1A1A1A;
-  letter-spacing: 0.05em;
+  height: 24px;
+  width: auto;
 }
 
 .admin-dash__header-title {

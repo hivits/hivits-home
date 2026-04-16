@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import emailjs from '@emailjs/browser';
 import { supabase } from '../../supabase';
 import './AdminInquiryDetail.css';
 
@@ -34,23 +33,19 @@ function AdminInquiryDetail() {
     if (!reply.trim()) return;
     setSendStatus('sending');
     try {
-      await emailjs.send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_REPLY_TEMPLATE_ID,
-        {
-          to_name: inquiry.name,
-          to_email: inquiry.email,
-          original_message: inquiry.message,
-          reply_message: reply,
-        },
-        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-      );
-
+      // Supabase 상태 업데이트
       await supabase.from('inquiries').update({
         status: 'replied',
         reply,
         replied_at: new Date().toISOString(),
       }).eq('id', id);
+
+      // 이메일 클라이언트로 답변 발송
+      const subject = encodeURIComponent(`[하이비츠] ${inquiry.name}님의 문의에 대한 답변입니다.`);
+      const body = encodeURIComponent(
+        `${inquiry.name}님 안녕하세요, 하이비츠입니다.\n\n${reply}\n\n---\n[원본 문의]\n${inquiry.message}`
+      );
+      window.open(`mailto:${inquiry.email}?subject=${subject}&body=${body}`);
 
       setInquiry((prev) => ({ ...prev, status: 'replied', reply }));
       setSendStatus('success');

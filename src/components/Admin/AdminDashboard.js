@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabase';
+import logo from '../../assets/logo_hivits.svg';
 import './AdminDashboard.css';
 
 function AdminDashboard() {
@@ -50,7 +51,7 @@ function AdminDashboard() {
     <div className="admin-dash">
       <header className="admin-dash__header">
         <div className="admin-dash__header-left">
-          <span className="admin-dash__logo">HIVITS</span>
+          <img src={logo} alt="HIVITS" className="admin-dash__logo" />
           <span className="admin-dash__header-title">문의 관리</span>
         </div>
         <button className="admin-dash__logout" onClick={handleLogout}>로그아웃</button>
