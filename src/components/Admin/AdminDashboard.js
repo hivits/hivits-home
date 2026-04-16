@@ -1,46 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
-import { signOut } from 'firebase/auth';
-import { db, auth } from '../../firebase';
+import { supabase } from '../../supabase';
 import './AdminDashboard.css';
 
 function AdminDashboard() {
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState('all'); // 'all' | 'new' | 'replied'
+  const [filter, setFilter] = useState('all');
   const navigate = useNavigate();
 
   useEffect(() => {
-    const q = query(collection(db, 'inquiries'), orderBy('createdAt', 'desc'));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setInquiries(data);
-      setLoading(false);
-    });
-    return () => unsubscribe();
+    fetchInquiries();
+
+    // 실시간 구독
+    const channel = supabase
+      .channel('inquiries')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'inquiries' }, () => {
+        fetchInquiries();
+      })
+      .subscribe();
+
+    return () => supabase.removeChannel(channel);
   }, []);
 
-  const handleLogout = async () => {
-    await signOut(auth);
+  const fetchInquiries = async () => {
+    const { data } = await supabase
+      .from('inquiries')
+      .select('*')
+      .order('created_at', { ascending: false });
+    setInquiries(data || []);
+    setLoading(false);
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('admin_authed');
     navigate('/admin/login');
   };
 
-  const filtered = filter === 'all'
-    ? inquiries
-    : inquiries.filter((i) => i.status === filter);
-
+  const filtered = filter === 'all' ? inquiries : inquiries.filter((i) => i.status === filter);
   const newCount = inquiries.filter((i) => i.status === 'new').length;
 
-  const formatDate = (ts) => {
-    if (!ts) return '-';
-    const d = ts.toDate ? ts.toDate() : new Date(ts);
+  const formatDate = (str) => {
+    if (!str) return '-';
+    const d = new Date(str);
     return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
   };
 
   return (
     <div className="admin-dash">
-      {/* 헤더 */}
       <header className="admin-dash__header">
         <div className="admin-dash__header-left">
           <span className="admin-dash__logo">HIVITS</span>
@@ -49,9 +56,7 @@ function AdminDashboard() {
         <button className="admin-dash__logout" onClick={handleLogout}>로그아웃</button>
       </header>
 
-      {/* 메인 컨텐츠 */}
       <main className="admin-dash__main">
-        {/* 통계 카드 */}
         <div className="admin-dash__stats">
           <div className="admin-dash__stat-card">
             <span className="admin-dash__stat-label">전체 문의</span>
@@ -67,7 +72,6 @@ function AdminDashboard() {
           </div>
         </div>
 
-        {/* 필터 탭 */}
         <div className="admin-dash__filters">
           {[['all', '전체'], ['new', '신규'], ['replied', '답변 완료']].map(([val, label]) => (
             <button
@@ -80,7 +84,6 @@ function AdminDashboard() {
           ))}
         </div>
 
-        {/* 문의 목록 */}
         {loading ? (
           <div className="admin-dash__empty">불러오는 중...</div>
         ) : filtered.length === 0 ? (
@@ -100,11 +103,7 @@ function AdminDashboard() {
               </thead>
               <tbody>
                 {filtered.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="admin-dash__row"
-                    onClick={() => navigate(`/admin/inquiry/${item.id}`)}
-                  >
+                  <tr key={item.id} className="admin-dash__row" onClick={() => navigate(`/admin/inquiry/${item.id}`)}>
                     <td>
                       <span className={`admin-dash__badge admin-dash__badge--${item.status}`}>
                         {item.status === 'new' ? '신규' : '답변 완료'}
@@ -114,7 +113,7 @@ function AdminDashboard() {
                     <td>{item.company}</td>
                     <td>{item.email}</td>
                     <td>{item.phone}</td>
-                    <td className="admin-dash__date">{formatDate(item.createdAt)}</td>
+                    <td className="admin-dash__date">{formatDate(item.created_at)}</td>
                   </tr>
                 ))}
               </tbody>

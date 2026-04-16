@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { supabase } from '../../supabase';
 import iconCheckbox from '../../assets/icon_checkbox.svg';
 import './Contact2.css';
 
@@ -42,14 +41,13 @@ function Contact2() {
 
     setStatus('sending');
     try {
-      await addDoc(collection(db, 'inquiries'), {
+      await supabase.from('inquiries').insert({
         name: form.name,
         company: form.company,
         phone: form.phone,
         email: form.email,
         message: form.message,
         status: 'new',
-        createdAt: serverTimestamp(),
       });
       setStatus('success');
       setForm({ name: '', company: '', phone: '', email: '', message: '' });
