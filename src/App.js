@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './index.css';
 import iconBtn from './assets/icon_btn.svg';
@@ -24,6 +24,10 @@ import Partners2 from "./components/Partners/Partners2";
 import Contact1 from "./components/Contact/Contact1";
 import Contact2 from "./components/Contact/Contact2";
 import Privacy from "./components/Privacy/Privacy";
+import AdminLogin from "./components/Admin/AdminLogin";
+import AdminDashboard from "./components/Admin/AdminDashboard";
+import AdminInquiryDetail from "./components/Admin/AdminInquiryDetail";
+import PrivateRoute from "./components/Admin/PrivateRoute";
 
 /* =====================
    맨 위로 버튼 컴포넌트
@@ -113,7 +117,33 @@ function ScrollToTopButton() {
 
 function AppInner() {
   const location = useLocation();
+  const isAdminPage = location.pathname.startsWith('/admin');
   const isBusinessPage = location.pathname === '/business';
+
+  if (isAdminPage) {
+    return (
+      <Routes>
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <AdminDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/inquiry/:id"
+          element={
+            <PrivateRoute>
+              <AdminInquiryDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
+      </Routes>
+    );
+  }
 
   return (
     <>

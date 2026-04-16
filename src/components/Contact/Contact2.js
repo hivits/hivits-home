@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../../firebase';
 import iconCheckbox from '../../assets/icon_checkbox.svg';
 import './Contact2.css';
 
@@ -32,7 +33,7 @@ function Contact2() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const newErrors = validate(form, agreed);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -40,28 +41,24 @@ function Contact2() {
     }
 
     setStatus('sending');
-
-    emailjs.send(
-      'service_jpgv1hr',     // ← 여기에 Service ID
-      'template_ugk9shq',    // ← 여기에 Template ID
-      {
+    try {
+      await addDoc(collection(db, 'inquiries'), {
         name: form.name,
         company: form.company,
         phone: form.phone,
         email: form.email,
         message: form.message,
-      },
-      'myYTKMfS_tp8eQlI4'      // ← 여기에 Public Key
-    )
-    .then(() => {
+        status: 'new',
+        createdAt: serverTimestamp(),
+      });
       setStatus('success');
       setForm({ name: '', company: '', phone: '', email: '', message: '' });
       setAgreed(false);
       setErrors({});
-    })
-    .catch(() => {
+    } catch (err) {
+      console.error(err);
       setStatus('error');
-    });
+    }
   };
 
   return (
@@ -137,12 +134,12 @@ function Contact2() {
 
             {/* 상태 메시지 */}
             <div style={{ height: '40px', marginTop: '16px' }}>
-              {status === 'success' && <p style={{ color: 'green', margin: 0 }}>✅ 문의가 성공적으로 전송되었습니다!</p>}
-              {status === 'error' && <p style={{ color: 'red', margin: 0 }}>❌ 전송 실패. 다시 시도해주세요.</p>}
+              {status === 'success' && <p style={{ color: 'green', margin: 0 }}>✅ 문의가 성공적으로 접수되었습니다! 빠른 시일 내에 답변 드리겠습니다.</p>}
+              {status === 'error' && <p style={{ color: 'red', margin: 0 }}>❌ 접수 실패. 다시 시도해주세요.</p>}
             </div>
             <div className="contact-form__btn-row">
               <button className="contact-form__btn" onClick={handleSubmit} disabled={status === 'sending'}>
-                {status === 'sending' ? '전송 중...' : '문의하기'}
+                {status === 'sending' ? '접수 중...' : '문의하기'}
               </button>
             </div>
           </div>
