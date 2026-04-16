@@ -29,6 +29,7 @@
 .admin-dash__logo {
   height: 24px;
   width: auto;
+  filter: brightness(0);
 }
 
 .admin-dash__header-title {
