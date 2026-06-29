@@ -6,7 +6,13 @@ function About7() {
   const mapRef = useRef(null);
 
   useEffect(() => {
+    const el = mapRef.current;
+    if (!el) return;
+
+    let cancelled = false;
+
     const loadMap = () => {
+      if (cancelled || !mapRef.current || !(window.google && window.google.maps)) return;
       const center = { lat: 37.48647, lng: 126.8932 };
 
       const map = new window.google.maps.Map(mapRef.current, {
@@ -21,12 +27,42 @@ function About7() {
       });
     };
 
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
-    script.async = true;
-    script.onload = loadMap;
+    // 이미 로드됐거나 로딩 중인 스크립트가 있으면 재사용(중복 삽입 방지)
+    const loadMapsScript = () => {
+      if (window.google && window.google.maps) {
+        loadMap();
+        return;
+      }
+      const existing = document.querySelector("script[data-google-maps]");
+      if (existing) {
+        existing.addEventListener("load", loadMap, { once: true });
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
+      script.async = true;
+      script.defer = true;
+      script.dataset.googleMaps = "true";
+      script.addEventListener("load", loadMap, { once: true });
+      document.head.appendChild(script);
+    };
 
-    document.head.appendChild(script);
+    // 지도가 화면에 가까워질 때만 스크립트 로드(초기 로딩에서 Maps JS 제외)
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          loadMapsScript();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(el);
+
+    return () => {
+      cancelled = true;
+      io.disconnect();
+    };
   }, []);
 
 

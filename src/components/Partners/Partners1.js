@@ -1,5 +1,5 @@
 import React from 'react';
-import imgPartners from '../../assets/img_partners.png';
+import imgPartners from '../../assets/img_partners.webp';
 import './Partners1.css';
 
 function Partners1() {

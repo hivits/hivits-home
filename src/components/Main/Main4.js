@@ -1,4 +1,4 @@
-import numberImg from '../../assets/img_number.png';
+import numberImg from '../../assets/img_number.webp';
 import './Main4.css';
 
 const STATS = [
