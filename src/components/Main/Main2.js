@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import hivisImg from '../../assets/img_hivits.png';
+import hivisImg from '../../assets/img_hivits.webp';
 import arrowIcon from '../../assets/icon_arrow.svg';
 import arrowHoverIcon from '../../assets/icon_arrow_hover.svg';
 import './Main2.css';

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import imgAbout2 from '../../assets/img_About2.png';
+import imgAbout2 from '../../assets/img_About2.webp';
 import './About2.css';
 
 function About2() {
@@ -22,10 +22,17 @@ function About2() {
       setProgress(currentProgress);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // rAF 스로틀 + passive: 매 스크롤 이벤트 리렌더를 프레임당 1회로 묶어 버벅임 제거(시각 동일)
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { handleScroll(); ticking = false; });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
     handleScroll(); // 초기 화면에서도 한번 계산
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (

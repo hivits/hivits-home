@@ -1,33 +1,42 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import './index.css';
 import iconBtn from './assets/icon_btn.svg';
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import PrivateRoute from "./components/Admin/PrivateRoute";
+
+// 홈(첫 화면)은 즉시 로드 — 초기 렌더 깜빡임 방지
 import Main1 from "./components/Main/Main1";
 import Main2 from "./components/Main/Main2";
 import Main3 from "./components/Main/Main3";
 import Main4 from "./components/Main/Main4";
 import Main5 from "./components/Main/Main5";
-import About1 from "./components/About/About1";
-import About2 from "./components/About/About2";
-import About3 from "./components/About/About3";
-import About4 from "./components/About/About4";
-import About5 from "./components/About/About5";
-import About6 from "./components/About/About6";
-import About7 from "./components/About/About7";
-import Business1 from "./components/Business/Business1";
-import Business2 from "./components/Business/Business2";
-import Partners1 from "./components/Partners/Partners1";
-import Partners2 from "./components/Partners/Partners2";
-import Contact1 from "./components/Contact/Contact1";
-import Contact2 from "./components/Contact/Contact2";
-import Privacy from "./components/Privacy/Privacy";
-import AdminLogin from "./components/Admin/AdminLogin";
-import AdminDashboard from "./components/Admin/AdminDashboard";
-import AdminInquiryDetail from "./components/Admin/AdminInquiryDetail";
-import PrivateRoute from "./components/Admin/PrivateRoute";
+
+// 나머지 라우트는 코드 분할(지연 로드) — 초기 번들에서 제외(supabase/emailjs 포함)
+const About1 = lazy(() => import("./components/About/About1"));
+const About2 = lazy(() => import("./components/About/About2"));
+const About3 = lazy(() => import("./components/About/About3"));
+const About4 = lazy(() => import("./components/About/About4"));
+const About5 = lazy(() => import("./components/About/About5"));
+const About6 = lazy(() => import("./components/About/About6"));
+const About7 = lazy(() => import("./components/About/About7"));
+const Business1 = lazy(() => import("./components/Business/Business1"));
+const Business2 = lazy(() => import("./components/Business/Business2"));
+const Partners1 = lazy(() => import("./components/Partners/Partners1"));
+const Partners2 = lazy(() => import("./components/Partners/Partners2"));
+const Contact1 = lazy(() => import("./components/Contact/Contact1"));
+const Contact2 = lazy(() => import("./components/Contact/Contact2"));
+const Privacy = lazy(() => import("./components/Privacy/Privacy"));
+const AdminLogin = lazy(() => import("./components/Admin/AdminLogin"));
+const AdminDashboard = lazy(() => import("./components/Admin/AdminDashboard"));
+const AdminInquiryDetail = lazy(() => import("./components/Admin/AdminInquiryDetail"));
+
+// 라우트 청크 로딩 중 자리표시 — 레이아웃 높이를 유지해 점프 방지(시각적으로 비어 있음)
+function RouteFallback({ full }) {
+  return <div style={{ minHeight: full ? '100vh' : '60vh' }} aria-hidden="true" />;
+}
 
 /* =====================
    맨 위로 버튼 컴포넌트
@@ -38,11 +47,17 @@ function ScrollToTopButton() {
   const [isOverFooter, setIsOverFooter] = useState(false);
 
   useEffect(() => {
-    // 스크롤 200px 이상이면 버튼 표시
+    // 스크롤 200px 이상이면 버튼 표시 (rAF 스로틀 + passive 로 스크롤 부드럽게)
+    let ticking = false;
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 200);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setIsVisible(window.scrollY > 200);
+        ticking = false;
+      });
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -122,26 +137,28 @@ function AppInner() {
 
   if (isAdminPage) {
     return (
-      <Routes>
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute>
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin/inquiry/:id"
-          element={
-            <PrivateRoute>
-              <AdminInquiryDetail />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
-      </Routes>
+      <Suspense fallback={<RouteFallback full />}>
+        <Routes>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute>
+                <AdminDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin/inquiry/:id"
+            element={
+              <PrivateRoute>
+                <AdminInquiryDetail />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
+        </Routes>
+      </Suspense>
     );
   }
 
@@ -149,6 +166,7 @@ function AppInner() {
     <>
       <Header />
 
+      <Suspense fallback={<RouteFallback />}>
       <Routes>
         <Route
           path="/"
@@ -217,6 +235,7 @@ function AppInner() {
           }
         />
       </Routes>
+      </Suspense>
 
       {/* 비즈니스 페이지에서만 이미지와 푸터 사이 간격 없애기 */}
       <Footer noMargin={isBusinessPage} />

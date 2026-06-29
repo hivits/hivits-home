@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './Business2.css';
-import imgRooti from '../../assets/img_business_rooti.jpg';
-import imgVitsbot from '../../assets/img_business_vitsbot.jpg';
-import imgPetmoa from '../../assets/img_business_petmoa.jpg';
-import imgAircare from '../../assets/img_business_aircare.jpg';
-import imgEsg from '../../assets/img_business_esg.jpg';
+import imgRooti from '../../assets/img_business_rooti.webp';
+import imgVitsbot from '../../assets/img_business_vitsbot.webp';
+import imgPetmoa from '../../assets/img_business_petmoa.webp';
+import imgAircare from '../../assets/img_business_aircare.webp';
+import imgEsg from '../../assets/img_business_esg.webp';
 
 // 탭 메뉴 리스트
 const TABS = [

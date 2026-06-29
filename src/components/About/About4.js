@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import imgAbout4 from '../../assets/img_About4.png';
+import imgAbout4 from '../../assets/img_About4.webp';
 import './About4.css';
 
 function About4() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import imgBusiness from '../../assets/img_business.png';
+import imgBusiness from '../../assets/img_business.webp';
 import './Business1.css';
 
 function Business1() {

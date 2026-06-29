@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import imgAbout from '../../assets/img_About.png';
+import imgAbout from '../../assets/img_About.webp';
 import './About1.css';
 
 function About1() {
@@ -19,10 +19,17 @@ function About1() {
       setProgress(currentProgress);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // rAF 스로틀 + passive: 매 스크롤 이벤트 리렌더를 프레임당 1회로 묶어 버벅임 제거(시각 동일)
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { handleScroll(); ticking = false; });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const paddingTop = 120 - (120 * progress);

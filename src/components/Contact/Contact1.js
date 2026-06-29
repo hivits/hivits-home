@@ -1,5 +1,5 @@
 import React from 'react';
-import imgContact from '../../assets/img_contact.png';
+import imgContact from '../../assets/img_contact.webp';
 import './Contact1.css';
 
 function Contact1() {
