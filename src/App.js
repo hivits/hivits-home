@@ -12,7 +12,6 @@ import Main1 from "./components/Main/Main1";
 import Main2 from "./components/Main/Main2";
 import Main3 from "./components/Main/Main3";
 import Main4 from "./components/Main/Main4";
-import Main5 from "./components/Main/Main5";
 
 // 나머지 라우트는 코드 분할(지연 로드) — 초기 번들에서 제외(supabase/emailjs 포함)
 const About1 = lazy(() => import("./components/About/About1"));
@@ -25,7 +24,6 @@ const About7 = lazy(() => import("./components/About/About7"));
 const Business1 = lazy(() => import("./components/Business/Business1"));
 const Business2 = lazy(() => import("./components/Business/Business2"));
 const Partners1 = lazy(() => import("./components/Partners/Partners1"));
-const Partners2 = lazy(() => import("./components/Partners/Partners2"));
 const Contact1 = lazy(() => import("./components/Contact/Contact1"));
 const Contact2 = lazy(() => import("./components/Contact/Contact2"));
 const Privacy = lazy(() => import("./components/Privacy/Privacy"));
@@ -176,7 +174,6 @@ function AppInner() {
               <Main2 />
               <Main3 />
               <Main4 />
-              <Main5 />
             </main>
           }
         />
@@ -211,7 +208,6 @@ function AppInner() {
           element={
             <main>
               <Partners1 />
-              <Partners2 />
             </main>
           }
         />
