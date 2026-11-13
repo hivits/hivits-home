@@ -63,7 +63,9 @@ function Business2() {
         </div>
 
         <div className="business-portfolio__content" ref={contentRef}>
-          <img src={IMAGES[activeTab]} alt={`${TABS[activeTab]} 포트폴리오`} loading="lazy" />
+          <div className={`business-portfolio__image${activeTab === 0 ? ' business-portfolio__image--rooti' : ''}`}>
+            <img src={IMAGES[activeTab]} alt={`${TABS[activeTab]} 포트폴리오`} loading="lazy" />
+          </div>
         </div>
       </div>
     </section>

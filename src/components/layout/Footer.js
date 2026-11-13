@@ -7,7 +7,6 @@ import './Footer.css';
 const NAV_ITEMS = [
   { name: 'About Hivits', path: '/about' },
   { name: 'Business',     path: '/business' },
-  { name: 'Partners',     path: '/partners' },
   { name: 'Contact Us',   path: '/contact' },
 ];
 

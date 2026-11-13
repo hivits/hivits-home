@@ -8,7 +8,6 @@ import './Header.css';
 const NAV_ITEMS = [
   { name: 'About Hivits', path: '/about' },
   { name: 'Business', path: '/business' },
-  { name: 'Partners', path: '/partners' },
   { name: 'Contact Us', path: '/contact' },
 ];
 
@@ -105,7 +104,7 @@ function Header() {
         </div>
 
         <nav className="header__nav">
-          {NAV_ITEMS.slice(0, 3).map((item) => (
+          {NAV_ITEMS.filter((item) => item.path !== '/contact').map((item) => (
             <Link
               key={item.name}
               to={item.path}
