@@ -19,7 +19,6 @@ const About2 = lazy(() => import("./components/About/About2"));
 const About3 = lazy(() => import("./components/About/About3"));
 const About4 = lazy(() => import("./components/About/About4"));
 const About5 = lazy(() => import("./components/About/About5"));
-const About6 = lazy(() => import("./components/About/About6"));
 const About7 = lazy(() => import("./components/About/About7"));
 const Business1 = lazy(() => import("./components/Business/Business1"));
 const Business2 = lazy(() => import("./components/Business/Business2"));
@@ -187,7 +186,6 @@ function AppInner() {
               <About3 />
               <About4 />
               <About5 />
-              <About6 />
               <About7 />
             </main>
           }
